@@ -122,12 +122,12 @@
                   <div class="row">
                       <div class="form-group mb-3 col-xs-12 col-sm-6">
                           <label
-                            for="expire_date"
+                            for="pvp"
                             >PVP
                           </label>
                           <input
-                            id="expire_date"
-                            name="expire_date"
+                            id="pvp"
+                            name="pvp"
                             type="text"
                             class="form-control validate"
                             data-large-mode="true"
@@ -135,12 +135,12 @@
                         </div>
                         <div class="form-group mb-3 col-xs-12 col-sm-6">
                           <label
-                            for="stock"
-                            >Units In Stock
+                            for="descuento"
+                            >Descuento
                           </label>
                           <input
-                            id="stock"
-                            name="stock"
+                            id="descuento"
+                            name="descuento"
                             type="text"
                             class="form-control validate"
                             required
@@ -161,7 +161,7 @@
                   <input
                     type="button"
                     class="btn btn-primary btn-block mx-auto"
-                    value="UPLOAD PRODUCT IMAGE"
+                    value="SUBIR IMAGEN"
                     onclick="document.getElementById('fileInput').click();"
                   />
                 </div>
@@ -193,7 +193,7 @@
     <!-- https://getbootstrap.com/ -->
     <script>
       $(function() {
-        $("#expire_date").datepicker();
+        $("#pvp").datepicker();
       });
     </script>
   </body>
