@@ -32,7 +32,7 @@ public class ProductoController {
         return "indexUsuario";
     }
 	
-	@GetMapping("/añadirProducto")
+	@GetMapping("/aniadirProducto")
     String aniadirProducto() {
         return "add-product.html";
     }
