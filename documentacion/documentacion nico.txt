@@ -1,0 +1,34 @@
+LUISMI DUDAS
+
+Hay una funcion de TH que sirve para asignar una clase o no
+dependiendo de una comprobacion previa, th class?
+
+
+criterios de entornos sobre todo el ultimo
+como que usar lombok y maven bien?
+lomnbok anotaciones menos entity y maven  por la dependencias
+
+
+vale con demostrar una importacion y unas anotaciones para lombok
+o como lo demuestro?
+
+
+
+vale con demostrar el proceso de commiteo desde ayer o tiene
+que ser a lo largo de todos los dias? q mas da si el proceso es el mismo
+
+
+casos de uso para trello, un ejemplo o donde sacar la informacion
+
+
+si he puesto el atributo Comprador, está bien, abre una nueva relacion?
+
+el Trello como historias de caso de uso?
+usar checklist...etc
+
+
+ HISTORIA DE USUARIO, CRITERIO DE ACEPTACION
+estado en el que se encuentra, numero de horas que le he dedicado
+
+
+entrega de un ejercicio? en plataforma
