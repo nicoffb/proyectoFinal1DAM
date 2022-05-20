@@ -21,21 +21,23 @@ public class ProductoController {
 	@Autowired
 	private ProductoServicio productoServicio;
 	
-	@GetMapping("/inicio")
+	@GetMapping("/indexAdmin")
     String inicio() {
-        return "index.html";
+        return "index";
     }
 	
 	
 	@GetMapping("/indexUsuario")
     String inicioUsuario() {
-        return "indexUsuario";
+        return "indexUsuario.html";
     }
 	
 	@GetMapping("/aniadirProducto")
     String aniadirProducto() {
         return "add-product.html";
     }
+	
+	/*
 
 	//METODO PARA LOGIN
 	@GetMapping("/nuevo")
@@ -45,7 +47,7 @@ public class ProductoController {
 	}
 	
 	
-/*	@GetMapping({"/list"})
+	@GetMapping({"/list"})
 	public String productList(Model model) {
 		
 		model.addAttribute("productos", productServicio.findAllProducts());

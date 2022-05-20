@@ -16,7 +16,7 @@ public class Inicio {
 	@Autowired
 	private  LineaVentaRepository lineaVentaRepository;
 
-
+/*
 	@PostConstruct
 
 	public void run() {
@@ -28,6 +28,7 @@ public class Inicio {
 		productoRepository.save(p);
 		
 	}
+	*/
 }
 
 		

@@ -19,9 +19,8 @@ public class Usuario {
 	//private String avatar;
 	private LocalDate fechaNacimiento;
 	
-	public String getAvatar() {
-		return "https://robohash.org/"+username;
-	}
+	//public String getAvatar() {
+		//return "https://robohash.org/"+username; }
 	
 
 }

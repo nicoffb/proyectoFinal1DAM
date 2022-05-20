@@ -26,16 +26,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/private/**").hasAnyRole("USER", "ADMIN")
-                .antMatchers("/admin/**", "/gestion/**").hasRole("ADMIN")
+                .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/indexAdmin/**").hasRole("ADMIN")
+                .antMatchers("/indexUsuario/**").hasRole("USER")
                 .anyRequest().permitAll()
                 .and().exceptionHandling().accessDeniedPage("/error")
-                .and().formLogin().loginPage("/login").loginProcessingUrl("/login2")
-                		.defaultSuccessUrl("/private")
-                		.failureUrl("/login-error").permitAll()
-                .and().logout().logoutUrl("/logout").logoutSuccessUrl("/").permitAll();
+                .and().formLogin()
+                .and().logout().logoutSuccessUrl("/");
 
     }
 
@@ -53,70 +52,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                             .password("{noop}"+ u.getPassword())
                             .roles(u.getRole())
                             .build();
+                    
+                    
 
                 })
                 .forEach(userDetailsManager::createUser);
-
+        
 
         return userDetailsManager;
 
 
     }
 }
-//
-//@Configuration
-//@EnableWebSecurity
-//public class SecurityConfig2 extends WebSecurityConfigurerAdapter {
-//
-//    @Autowired
-//    private UsuarioRepo usuarios;
-//
-//    @Override
-//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.userDetailsService(userDetailsService());
-//    }
-//
-//    @Override
-//    protected void configure(HttpSecurity http) throws Exception {
-//        http
-//                .csrf().disable()
-//                .authorizeRequests()
-//                .antMatchers("/private/").hasAnyRole("USER", "ADMIN")
-//                .antMatchers("/admin/", "/gestion/**").hasRole("ADMIN")
-//                .anyRequest().permitAll()
-//                .and().exceptionHandling().accessDeniedPage("/error")
-//                .and().formLogin().loginPage("/login").loginProcessingUrl("/login2")
-//                        .defaultSuccessUrl("/private")
-//                        .failureUrl("/login-error").permitAll()
-//                .and().logout().logoutUrl("/logout").logoutSuccessUrl("/").permitAll().and() 
-//                .formLogin().usernameParameter("username")
-//                .passwordParameter("password")
-//                .permitAll();
-//
-//    }
-//
-//    @Bean
-//    @Override
-//    public UserDetailsService userDetailsService() {
-//
-//        InMemoryUserDetailsManager userDetailsManager = new InMemoryUserDetailsManager();
-//
-//        usuarios.getUsuarios()
-//                .stream()
-//                .map(u -> {
-//                    return User
-//                            .withUsername(u.getUsername())
-//                            .password("{noop}"+ u.getPassword())
-//                            .roles(u.getRole())
-//                            .build();
-//
-//                })
-//                .forEach(userDetailsManager::createUser);
-//
-//
-//        return userDetailsManager;
-//
-//
-//    }
-//} 
-
