@@ -28,14 +28,26 @@ public class UsuarioRepo {
 	public void init() {
 		usuarios = List.of(
 				Usuario.builder()
-					.username("luismi")
-					.password("12345678")
+					.username("nico")
+					.password("1234")
 					.role("ADMIN")
-					.nombre("Luis Miguel")
-					.apellidos("López Magaña")
-					.fechaNacimiento(LocalDate.of(1982, 1, 1))
+					.nombre("Nicolás")
+					.apellidos("Fernández de la Fuente Bursón")
+					.fechaNacimiento(LocalDate.of(1993, 1, 1))
 					.build()
 				,
+				
+				Usuario.builder()
+				.username("luismi")
+				.password("12345678")
+				.role("ADMIN")
+				.nombre("Luis Miguel")
+				.apellidos("López Magaña")
+				.fechaNacimiento(LocalDate.of(1982, 1, 1))
+				.build(),
+				
+				
+				
 				Usuario.builder()
 				.username("angel")
 				.password("87654321")
