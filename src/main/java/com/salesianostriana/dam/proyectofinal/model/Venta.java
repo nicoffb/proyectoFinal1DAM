@@ -37,6 +37,7 @@ public class Venta {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
+	private String comprador;
 }
 
 //recuerda que para el admin debe salir editar y borrar , al usuario solo la opcion comprar dle carrito

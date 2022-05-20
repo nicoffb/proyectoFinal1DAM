@@ -32,6 +32,10 @@ public class ProductoController {
         return "indexUsuario";
     }
 	
+	@GetMapping("/aniadirProducto")
+    String aniadirProducto() {
+        return "add-product.html";
+    }
 
 	//METODO PARA LOGIN
 	@GetMapping("/nuevo")
