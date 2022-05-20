@@ -21,15 +21,15 @@ public class ProductoController {
 	@Autowired
 	private ProductoServicio productoServicio;
 	
-	@GetMapping("/inicio")
+	@GetMapping("/indexAdmin")
     String inicio() {
-        return "index.html";
+        return "index";
     }
 	
 	
 	@GetMapping("/indexUsuario")
     String inicioUsuario() {
-        return "indexUsuario";
+        return "indexUsuario.html";
     }
 	
 	@GetMapping("/aniadirProducto")
