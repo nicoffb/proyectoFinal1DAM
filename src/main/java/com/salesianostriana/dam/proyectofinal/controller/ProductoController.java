@@ -36,6 +36,8 @@ public class ProductoController {
     String aniadirProducto() {
         return "add-product.html";
     }
+	
+	/*
 
 	//METODO PARA LOGIN
 	@GetMapping("/nuevo")
@@ -45,7 +47,7 @@ public class ProductoController {
 	}
 	
 	
-/*	@GetMapping({"/list"})
+	@GetMapping({"/list"})
 	public String productList(Model model) {
 		
 		model.addAttribute("productos", productServicio.findAllProducts());

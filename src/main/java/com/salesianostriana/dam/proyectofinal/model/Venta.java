@@ -1,5 +1,6 @@
 package com.salesianostriana.dam.proyectofinal.model;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -27,7 +30,9 @@ import lombok.ToString;
 public class Venta {
 	
 	private double precioTotal;
-	private LocalTime fechaCompra;
+	
+	@DateTimeFormat(pattern="MM/dd/yyyy")
+	private LocalDate fechaCompra;
 	
 	@Builder.Default
     @ToString.Exclude
