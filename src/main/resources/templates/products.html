@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Product Page - Admin HTML Template</title>
+    <title>Administración de productos</title>
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Roboto:400,700"
@@ -19,8 +19,9 @@
     <nav class="navbar navbar-expand-xl">
       <div class="container h-100">
         <a class="navbar-brand" href="index.html">
-          <h1 class="tm-site-title mb-0">Product Admin</h1>
+          <h1 class="tm-site-title mb-0">Administración de productos</h1>
         </a>
+
         <button
           class="navbar-toggler ml-auto mr-0"
           type="button"
@@ -43,25 +44,6 @@
               </a>
             </li>
 
-            
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="navbarDropdown"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                <i class="fas fa-cog"></i>
-                <span> Settings <i class="fas fa-angle-down"></i> </span>
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Añadir</a>
-                <a class="dropdown-item" href="#">Editar</a>
-                <a class="dropdown-item" href="#">Lista</a>
-              </div>
             </li>
           </ul>
           <ul class="navbar-nav">
@@ -75,28 +57,27 @@
       </div>
     </nav>
     <div class="container mt-5">
-      <div class="row tm-content-row">
-        <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8 tm-block-col">
+      <div>
+        <div>
           <div class="tm-bg-primary-dark tm-block tm-block-products">
             <div class="tm-product-table-container">
               <table class="table table-hover tm-table-small tm-product-table">
                 <thead>
                   <tr>
                     <th scope="col">&nbsp;</th>
-                    <th scope="col">PRODUCT NAME</th>
-                    <th scope="col">UNIT SOLD</th>
-                    <th scope="col">IN STOCK</th>
-                    <th scope="col">EXPIRE DATE</th>
-                    <th scope="col">&nbsp;</th>
+                    <th scope="col">NOMBRE DEL PRODUCTO</th>
+                    <th scope="col">PVP </th>
+                    <th scope="col">DESCUENTO</th>
+                    <th scope="col">FECHA ? &nbsp;</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <th scope="row"><input type="checkbox" /></th>
-                    <td class="tm-product-name">Lorem Ipsum Product 1</td>
-                    <td>1,450</td>
-                    <td>550</td>
-                    <td>28 March 2019</td>
+                    <td class="tm-product-name">God of War</td>
+                    <td>29.99</td>
+                    <td>50</td>
+                    <td>28 Marzo</td>
                     <td>
                       <a href="#" class="tm-product-delete-link">
                         <i class="far fa-trash-alt tm-product-delete-icon"></i>
@@ -105,9 +86,9 @@
                   </tr>
                   <tr>
                     <th scope="row"><input type="checkbox" /></th>
-                    <td class="tm-product-name">Lorem Ipsum Product 2</td>
-                    <td>1,250</td>
-                    <td>750</td>
+                    <td class="tm-product-name">Star Wars:Jedi The Fallen Order</td>
+                    <td>16.99</td>
+                    <td>30</td>
                     <td>21 March 2019</td>
                     <td>
                       <a href="#" class="tm-product-delete-link">
@@ -117,9 +98,9 @@
                   </tr>
                   <tr>
                     <th scope="row"><input type="checkbox" /></th>
-                    <td class="tm-product-name">Lorem Ipsum Product 3</td>
-                    <td>1,100</td>
-                    <td>900</td>
+                    <td class="tm-product-name">The Legend of Zelda</td>
+                    <td>59.99</td>
+                    <td>0</td>
                     <td>18 Feb 2019</td>
                     <td>
                       <a href="#" class="tm-product-delete-link">
@@ -129,7 +110,7 @@
                   </tr>
                   <tr>
                     <th scope="row"><input type="checkbox" /></th>
-                    <td class="tm-product-name">Lorem Ipsum Product 4</td>
+                    <td class="tm-product-name">---------</td>
                     <td>1,400</td>
                     <td>600</td>
                     <td>24 Feb 2019</td>
@@ -187,63 +168,32 @@
                       </a>
                     </td>
                   </tr>
-                  <tr>
-                    <th scope="row"><input type="checkbox" /></th>
-                    <td class="tm-product-name">Lorem Ipsum Product 9</td>
-                    <td>1,200</td>
-                    <td>800</td>
-                    <td>24 Jan 2019</td>
-                    <td>
-                      <a href="#" class="tm-product-delete-link">
-                        <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row"><input type="checkbox" /></th>
-                    <td class="tm-product-name">Lorem Ipsum Product 10</td>
-                    <td>1,600</td>
-                    <td>400</td>
-                    <td>22 Jan 2019</td>
-                    <td>
-                      <a href="#" class="tm-product-delete-link">
-                        <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row"><input type="checkbox" /></th>
-                    <td class="tm-product-name">Lorem Ipsum Product 11</td>
-                    <td>2,000</td>
-                    <td>400</td>
-                    <td>21 Jan 2019</td>
-                    <td>
-                      <a href="#" class="tm-product-delete-link">
-                        <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                      </a>
-                    </td>
-                  </tr>
+                
                 </tbody>
               </table>
             </div>
             <!-- table container -->
-            <a
-              href="add-product.html"
-              class="btn btn-primary btn-block text-uppercase mb-3">Add new product</a>
-            <button class="btn btn-primary btn-block text-uppercase">
-              Delete selected products
-            </button>
+            
           </div>
+
+          
        
         </div>
+
       </div>
+      <a
+              href="add-product.html"
+              class="btn btn-primary btn-block text-uppercase mb-3">Añadir nuevo producto</a>
+            <button class="btn btn-primary btn-block text-uppercase">
+              Borrar productos seleccionados
+            </button>
     </div>
     <footer class="tm-footer row tm-mt-small">
       <div class="col-12 font-weight-light">
         <p class="text-center text-white mb-0 px-4 small">
           Copyright &copy; <b>2018</b> All rights reserved. 
           
-          Design: <a rel="nofollow noopener" href="https://templatemo.com" class="tm-footer-link">Template Mo</a>
+          Design: <a rel="nofollow noopener" href="https://templatemo.com" class="tm-footer-link"></a>
         </p>
       </div>
     </footer>
