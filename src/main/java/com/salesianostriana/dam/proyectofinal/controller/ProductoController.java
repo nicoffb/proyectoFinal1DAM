@@ -10,16 +10,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.salesianostriana.dam.proyectofinal.model.Producto;
 import com.salesianostriana.dam.proyectofinal.servicio.ProductoServicio;
 
+import lombok.RequiredArgsConstructor;
+
 
 
 @Controller
+@RequiredArgsConstructor
 public class ProductoController {
 	
 	@Autowired
 	HttpSession session;
 	
-	@Autowired
-	private ProductoServicio productoServicio;
+	
+	private final ProductoServicio productoServicio;
 	
 	@GetMapping("/indexAdmin")
     String inicio() {
@@ -36,6 +39,12 @@ public class ProductoController {
     String aniadirProducto() {
         return "add-product.html";
     }
+	
+	@GetMapping("/auth-error")
+    String error() {
+        return "auto-error.html";
+    }
+	
 	
 	/*
 

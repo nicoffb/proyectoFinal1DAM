@@ -32,12 +32,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/indexAdmin/**").hasRole("ADMIN")
                 .antMatchers("/indexUsuario/**").hasRole("USER")
                 .anyRequest().permitAll()
-                .and().exceptionHandling().accessDeniedPage("/error")
+                .and().exceptionHandling().accessDeniedPage("/auth-error")
                 .and().formLogin()
                 .and().logout().logoutSuccessUrl("/");
 
     }
-
+  //  <img th:src = /img  > PONER BARRA DELANTE EN TODAS LAS RESOURCES DE STATIC
+    //que dice de un error de cajon de sastre no sino que distintos como?
+    
+    
     @Bean
     @Override
     public UserDetailsService userDetailsService() {
