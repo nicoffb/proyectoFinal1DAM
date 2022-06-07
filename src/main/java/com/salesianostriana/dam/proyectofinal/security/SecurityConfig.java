@@ -35,6 +35,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().exceptionHandling().accessDeniedPage("/auth-error")
                 .and().formLogin()
                 .and().logout().logoutSuccessUrl("/");
+        
+        http.csrf().disable();
+
+        http.headers().frameOptions().disable();
 
     }
   //  <img th:src = /img  > PONER BARRA DELANTE EN TODAS LAS RESOURCES DE STATIC
