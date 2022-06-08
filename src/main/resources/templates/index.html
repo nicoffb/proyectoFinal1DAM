@@ -168,6 +168,8 @@
               </div>
             </div>
           </div>
+          
+          
           <div class="col">
             <div class="card shadow-sm">
               <img src="../static/imagenes/zelda4k.jpg" th:src="@{imagenes/zelda4k.jpg}" alt="" width="100%" height="450">
@@ -188,20 +190,26 @@
 
           <!-- CARTA DE EJEMPLO ------------------------------------------------------------------------------------  -->
           <div class="col" th:each="producto : ${listaProductos}">
+          <img th:src="${#strings.isEmpty(producto.imagen)} ? 'http://placehold.it/350x260' : ${producto.imagen}" alt="miniatura" width="100%" height="450">
             <div class="card shadow-sm">
               <div class="card-body">
                 <p class="card-text"  th:text="${producto.descripcion}">
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                     <button type="button" class="btn btn-sm btn-outline-secondary">Ver</button>
+                     <button type="button" class="btn btn-sm btn-outline-secondary">Editar</button>
+                     <button type="button" class="btn btn-sm btn-outline-secondary">Borrar</button>
                   </div>
-                  <small class="text-muted"  th:text="${producto.descripcion}" >PRECIO</small>
+                  <small class="text-muted" th:text="${'$'+producto.pvp}"  > $ </small>
                 </div>
               </div>
             </div>
           </div>
-          <!-- aqui termina el ejemplo th:href="@{/alumno/detalle/{id}(id=${alumno.id})}  -->
+          <!-- AQUI TERMINA EL EJEMPLO th:href="@{/detalle/{id}(id=${producto.id})}
+          Saber usar la consola, insertar, modificar datos
+          numbers en 02expresiones , coger tipos de datos
+          en el ver de cada producto poner este thref para buscar por id  -->
+          
           <div class="col">
             <div class="card shadow-sm">
               <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg"

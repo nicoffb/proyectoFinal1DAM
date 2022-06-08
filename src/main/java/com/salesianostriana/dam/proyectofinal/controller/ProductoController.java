@@ -69,10 +69,13 @@ public class ProductoController {
 		
 		if (result.isPresent()) {
 			model.addAttribute("producto", result.get());
-			return "producto/detail";			
+			return "productoDetalle";			
 		} else {
-			return "redirect:/producto/";
+			return "redirect:/lista";
 		}
+		
+		//tendria q tener otro controller para cuando sea el usuario
+		//redirect lleva a otro controller, sin redirect al html
 		
 		//que es lo de redirect, porque producto detail, pq detalle si lo q quiero es mostrar especificamente
 		//los atributos de un solo id
