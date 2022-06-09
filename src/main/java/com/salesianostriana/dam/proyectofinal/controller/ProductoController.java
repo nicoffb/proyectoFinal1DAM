@@ -46,10 +46,19 @@ public class ProductoController {
         return "auto-error";
     }
 	
+	/*
 	@GetMapping("/lista")
     String listaProductos() {
         return "products";
     }
+	*/
+	
+	@GetMapping("/lista")
+    public String listaProductos(Model model) {
+		model.addAttribute("listaProductos", productoServicio.findAll());
+        return "products";
+    }
+	
 	
 	
 	//METODO PARA INVOCAR LA LISTA DE PRODUCTOS a partir de la base de datos
