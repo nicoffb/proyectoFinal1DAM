@@ -33,7 +33,7 @@ public class Producto {
 	@Id
 	@Column(name = "id")
 	@SequenceGenerator(initialValue=500, 
-	                   allocationSize=1,
+	                   		allocationSize=1,
 	                        name = "id", 
 	                        sequenceName="id")
 	@GeneratedValue(generator="id")
