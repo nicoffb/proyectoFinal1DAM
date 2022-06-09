@@ -36,9 +36,9 @@ public class ProductoController {
         return "indexUsuario";
     }
 	
-	@GetMapping("/aniadirProducto")
+	@GetMapping("/sumar")
     String aniadirProducto() {
-        return "add-product";
+        return "formularioProducto";
     }
 	
 	@GetMapping("/auth-error")
@@ -46,12 +46,6 @@ public class ProductoController {
         return "auto-error";
     }
 	
-	/*
-	@GetMapping("/lista")
-    String listaProductos() {
-        return "products";
-    }
-	*/
 	
 	@GetMapping("/lista")
     public String listaProductos(Model model) {
@@ -91,10 +85,15 @@ public class ProductoController {
 		
 	}
 	
-	
-	
 	/*
-
+	@PostMapping({ "/submit", "/submit/{id}" })
+	public String procesaFormulario(@ModelAttribute("perro") Perro perro) {
+		
+		perroService.save(perro);
+		return "redirect:/";
+	}
+	
+	*/
 	
 	@GetMapping("/nuevo")
 	public String mostrarFormulario(Model model) {
@@ -102,7 +101,7 @@ public class ProductoController {
 		return "formularioProducto";
 	}
 	
-	
+	/*
 	@GetMapping({"/list"})
 	public String productList(Model model) {
 		
