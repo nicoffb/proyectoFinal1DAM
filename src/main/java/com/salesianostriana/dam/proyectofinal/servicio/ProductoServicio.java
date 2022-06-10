@@ -11,8 +11,6 @@ import com.salesianostriana.dam.proyectofinal.model.Producto;
 import com.salesianostriana.dam.proyectofinal.repository.ProductoRepository;
 import com.salesianostriana.dam.proyectofinal.servicio.base.ServicioBaseImpl;
 
-
-
 @Service
 public class ProductoServicio extends
 		ServicioBaseImpl<Producto, Long, ProductoRepository>{

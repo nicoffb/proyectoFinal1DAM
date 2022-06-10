@@ -18,7 +18,7 @@
 <body id="reportsPage">
   <nav class="navbar navbar-expand-xl">
     <div class="container h-100">
-      <a class="navbar-brand" href="index.html">
+      <a class="navbar-brand" href="./index.html" th:href="@{/}">
         <h1 class="tm-site-title mb-0">Administración de productos</h1>
       </a>
 
@@ -33,7 +33,7 @@
 
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="products.html">
+            <a class="nav-link active"href="./products.html" th:href="@{/lista}">
               <i class="fas fa-shopping-cart"></i> Productos
             </a>
           </li>
@@ -62,6 +62,7 @@
                   <th scope="col">NOMBRE DEL PRODUCTO</th>
                   <th scope="col">PVP </th>
                   <th scope="col">DESCUENTO</th>
+                  <th scope="col">EDITAR &nbsp;</th>
                   <th scope="col">BORRAR &nbsp;</th>
                 </tr>
               </thead>
@@ -72,6 +73,11 @@
                   <td class="tm-product-name" th:text="${producto.nombre}"></td>
                   <td th:text="${producto.pvp}"></td>
                   <td th:text="${producto.descuento}"></td>
+                  <td>
+                    <a href="#" class="tm-product-delete-link">
+                      <i class="far fa-trash-alt tm-product-delete-icon"></i>
+                    </a>
+                  </td>
                   <td>
                     <a href="#" class="tm-product-delete-link">
                       <i class="far fa-trash-alt tm-product-delete-icon"></i>

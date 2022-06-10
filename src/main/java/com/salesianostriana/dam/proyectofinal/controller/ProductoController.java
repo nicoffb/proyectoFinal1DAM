@@ -97,17 +97,62 @@ public class ProductoController {
 	}
 	
 	//submitear nuevo producto
-	@PostMapping({ "/submit", "/submit/{id}" })
+	@PostMapping( "/submit")
 	public String procesarFormulario(@ModelAttribute("producto") Producto producto) {
 		
 		productoServicio.save(producto);
-		return "redirect:/products";
+		return "redirect:/lista";
 	}
 
-	
 
 	
+//EDITAR
+	@GetMapping("/editar/{id}")
+	public String editarProducto(@PathVariable("id") Long id, Model model) {
+
+		Optional<Producto> producto = productoServicio.findById(id);
+
+		if (producto != null) {
+			model.addAttribute("producto", producto);
+			return "/formularioProducto";
+		} else {
+			return "redirect:/lista";
+		}
+
+	}	
 	
+
+	@PostMapping("/editar/submit")
+	public String procesarFormularioEdicion(@ModelAttribute("producto") Producto p) {
+		productoServicio.edit(p);
+		return "redirect:/lista";//Volvemos a redirigir la listado a través del controller para pintar la lista actualizada con la modificación hecha
+	}
+	
+}
+	
+	//many to one 9
+	//te lleva a editar con datos rellenos
+	
+	
+	//necesito post mapping
+
+/*	
+	@GetMapping("/borrar/{id}")
+	public String borrarProducto(@PathVariable("id") Long id, Model model) {
+
+		Optional<Producto> producto = productoServicio.findById(id);
+
+		if (producto != null) {
+			productoServicio.delete(producto);
+		}
+
+		return "redirect:/admin/producto/";
+
+	}
+
+}
+*/
+
 /*La siguiente línea viene del último método, 
  * que se dedica a buscar, para que este método, 
  * muestre también el listado de productos cuando se han buscado, 
@@ -121,38 +166,44 @@ public class ProductoController {
 	}
 	
 
-	@GetMapping("/editar/{id}")
-	public String editarProducto(@PathVariable("id") Long id, Model model) {
 
-		Optional<Producto> producto = productoServicio.findById(id);
-
-		if (producto != null) {
-			model.addAttribute("producto", producto);
-			//model.addAttribute("categorias", categoriaService.findAll());
-			return "/sumar";
-		} else {
-			return "redirect:/admin/producto/";
-		}
-
+@GetMapping("/editar/{id}")
+public String mostrarFormularioEdicion(@PathVariable("id") long id, Model model) {
+	
+	//Buscamos al alumno por id y recordemos que el método findById del servicio, devuelve el objeto buscado o null si no se encuentra.
+	 
+	
+	Alumno aEditar = alumnoServicio.findById(id);
+	
+	if (aEditar != null) {
+		model.addAttribute("alumno", aEditar);
+		return "formulario";
+	} else {
+		// No existe ningún alumno con el Id proporcionado.
+		// Redirigimos hacia el listado.
+		return "redirect:/";
 	}
 	
-	//many to one 9
-	//te lleva a editar con datos rellenos
 	
-	
-	//necesito post mapping
-	
-	@GetMapping("/borrar/{id}")
-	public String borrarProducto(@PathVariable("id") Long id, Model model) {
-
-		Optional<Producto> producto = productoServicio.findById(id);
-
-		if (producto != null) {
-			productoServicio.delete(producto);
-		}
-
-		return "redirect:/admin/producto/";
-
-	}
-*/
 }
+
+
+ * Método que procesa la respuesta del formulario al editar
+ 
+@PostMapping("/editar/submit")
+public String procesarFormularioEdicion(@ModelAttribute("alumno") Alumno a) {
+	alumnoServicio.edit(a);
+	return "redirect:/";//Volvemos a redirigir la listado a través del controller para pintar la lista actualizada con la modificación hecha
+}
+
+/**
+ * Método que borrar un alumno por su Id
+ * @param id
+ * @return
+ 
+@GetMapping("/borrar/{id}")
+public String borrar(@PathVariable("id") long id) {
+	alumnoServicio.delete(id);
+	return "redirect:/";
+}
+*/

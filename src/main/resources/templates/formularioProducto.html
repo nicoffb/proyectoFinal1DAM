@@ -18,7 +18,7 @@
 <body>
   <nav class="navbar navbar-expand-xl">
     <div class="container h-100">
-      <a class="navbar-brand" href="../templates/products.html" th:href="@{/lista}">
+      <a class="navbar-brand" href="./index.html" th:href="@{/}">
         <h1 class="tm-site-title mb-0">Administración de productos</h1>
       </a>
       <button class="navbar-toggler ml-auto mr-0" type="button" data-toggle="collapse"
@@ -32,7 +32,7 @@
 
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="products.html">
+            <a class="nav-link active" href="./products.html" th:href="@{/lista}">
               <i class="fas fa-shopping-cart"></i> Productos
             </a>
           </li>
@@ -75,7 +75,7 @@
 
 
           <!-- FORMULARIOOOOOOOOOO -->
-          <form class="form-horizontal needs-validation" novalidate method="POST" th:action="@{/submit}" th:object="${producto}">
+          <form class="form-horizontal" novalidate method="POST" th:action="${producto.id != 0} ? @{/editar/submit} : @{/submit}" th:object="${producto}">
             <div class="row tm-edit-product-row">
               <div class="col-xl-6 col-lg-6 col-md-12">
                 
