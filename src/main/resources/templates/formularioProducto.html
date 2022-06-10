@@ -18,7 +18,7 @@
 <body>
   <nav class="navbar navbar-expand-xl">
     <div class="container h-100">
-      <a class="navbar-brand" href="index.html">
+      <a class="navbar-brand" href="../templates/products.html" th:href="@{/lista}">
         <h1 class="tm-site-title mb-0">Administración de productos</h1>
       </a>
       <button class="navbar-toggler ml-auto mr-0" type="button" data-toggle="collapse"
@@ -72,27 +72,30 @@
               <h2 class="tm-block-title d-inline-block">Añadir Producto</h2>
             </div>
           </div>
-          <form class="form-horizontal needs-validation" novalidate method="POST" action="/submit/">
+
+
+          <!-- FORMULARIOOOOOOOOOO -->
+          <form class="form-horizontal needs-validation" novalidate method="POST" th:action="@{/submit}" th:object="${producto}">
             <div class="row tm-edit-product-row">
               <div class="col-xl-6 col-lg-6 col-md-12">
-                <form action="" class="tm-edit-product-form">
+                
                   <div class="form-group mb-3">
-                    <label for="name">Nombre</label>
-                    <input id="name" name="name" type="text" class="form-control validate" required />
+                    <label for="nombre">Nombre</label>
+                    <input id="nombre" name="nombre" type="text" class="form-control validate" required th:field="*{nombre}" />
                   </div>
                   <div class="form-group mb-3">
-                    <label for="description">Descripcion</label>
-                    <textarea class="form-control validate" rows="3" required></textarea>
+                    <label for="descripcion">Descripcion</label>
+                    <textarea class="form-control validate" rows="3" required th:field="*{descripcion}"></textarea>
                   </div>
 
                   <div class="row">
                     <div class="form-group mb-3 col-xs-12 col-sm-6">
                       <label for="pvp">PVP</label>
-                      <input id="pvp" name="pvp" type="text" class="form-control validate" data-large-mode="true" />
+                      <input id="pvp" name="pvp" type="text" class="form-control validate" data-large-mode="true" th:field="*{pvp}"  />
                     </div>
                     <div class="form-group mb-3 col-xs-12 col-sm-6">
                       <label for="descuento">Descuento</label>
-                      <input id="descuento" name="descuento" type="text" class="form-control validate" required />
+                      <input id="descuento" name="descuento" type="text" class="form-control validate" required th:field="*{descuento}" />
                     </div>
                   </div>
 
@@ -104,7 +107,7 @@
                 </div>
                 <div class="custom-file mt-3 mb-3">
                   <input id="fileInput" type="file" style="display:none;" />
-                  <input type="button" class="btn btn-primary btn-block mx-auto" value="SUBIR IMAGEN"
+                  <input type="button" class="btn btn-primary btn-block mx-auto" value="SUBIR IMAGEN" th:field="*{imagen}"
                     onclick="document.getElementById('fileInput').click();" />
                 </div>
               </div>
@@ -120,7 +123,7 @@
   <footer class="tm-footer row tm-mt-small">
     <div class="col-12 font-weight-light">
       <p class="text-center text-white mb-0 px-4 small">
-        Copyright &copy; <b>2018</b> All rights reserved.
+        Copyright &copy; <b>2022</b> 
 
         Design: <a rel="nofollow noopener" href="https://templatemo.com" class="tm-footer-link">Template Mo</a>
       </p>

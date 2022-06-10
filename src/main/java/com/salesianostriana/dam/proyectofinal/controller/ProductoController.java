@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import com.salesianostriana.dam.proyectofinal.model.Producto;
 import com.salesianostriana.dam.proyectofinal.servicio.ProductoServicio;
 import lombok.RequiredArgsConstructor;
@@ -64,6 +66,7 @@ public class ProductoController {
 		return "index";
 	}
 	
+		
 	//METODO PARA INVOCAR ATRIBUTOS POR ID
 	@GetMapping("/detalle/{id}")
 	public String detail(Model model, @PathVariable Long id) {
@@ -85,28 +88,26 @@ public class ProductoController {
 		
 	}
 	
-	/*
-	@PostMapping({ "/submit", "/submit/{id}" })
-	public String procesaFormulario(@ModelAttribute("perro") Perro perro) {
-		
-		perroService.save(perro);
-		return "redirect:/";
-	}
 	
-	*/
-	
+	//nuevo producto
 	@GetMapping("/nuevo")
 	public String mostrarFormulario(Model model) {
 		model.addAttribute("producto", new Producto());
 		return "formularioProducto";
 	}
 	
-	/*
-	@GetMapping({"/list"})
-	public String productList(Model model) {
+	//submitear nuevo producto
+	@PostMapping({ "/submit", "/submit/{id}" })
+	public String procesarFormulario(@ModelAttribute("producto") Producto producto) {
 		
-		model.addAttribute("productos", productServicio.findAllProducts());
+		productoServicio.save(producto);
+		return "redirect:/products";
+	}
 
+	
+
+	
+	
 /*La siguiente línea viene del último método, 
  * que se dedica a buscar, para que este método, 
  * muestre también el listado de productos cuando se han buscado, 
@@ -117,9 +118,41 @@ public class ProductoController {
 		model.addAttribute("searchForm", new SearchBean());
 		return "list";
 		
-		
-		
 	}
-	*/
+	
 
+	@GetMapping("/editar/{id}")
+	public String editarProducto(@PathVariable("id") Long id, Model model) {
+
+		Optional<Producto> producto = productoServicio.findById(id);
+
+		if (producto != null) {
+			model.addAttribute("producto", producto);
+			//model.addAttribute("categorias", categoriaService.findAll());
+			return "/sumar";
+		} else {
+			return "redirect:/admin/producto/";
+		}
+
+	}
+	
+	//many to one 9
+	//te lleva a editar con datos rellenos
+	
+	
+	//necesito post mapping
+	
+	@GetMapping("/borrar/{id}")
+	public String borrarProducto(@PathVariable("id") Long id, Model model) {
+
+		Optional<Producto> producto = productoServicio.findById(id);
+
+		if (producto != null) {
+			productoServicio.delete(producto);
+		}
+
+		return "redirect:/admin/producto/";
+
+	}
+*/
 }
