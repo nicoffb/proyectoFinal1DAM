@@ -16,11 +16,11 @@ public class Usuario {
 	
 	private String username, password, role;
 	private String nombre, apellidos;
-	//private String avatar;
+	private String avatar;
 	private LocalDate fechaNacimiento;
 	
-	//public String getAvatar() {
-		//return "https://robohash.org/"+username; }
+	public String getAvatar() {
+		return "https://robohash.org/"+username; }
 	
 
 }

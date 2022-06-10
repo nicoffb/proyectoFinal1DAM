@@ -204,7 +204,7 @@ button:focus {
 .table {
   background-color: #50697f;
   color: #fff;
-  font-size: 85%;
+  font-size: 100%;
   margin-bottom: 0;
 }
 thead {
@@ -438,7 +438,7 @@ input[type="checkbox"]:focus {
 .tm-product-table-container {
   max-height: 465px;
   margin-bottom: 15px;
-  overflow-y: scroll;
+  
 }
 .tm-product-table tr {
   font-weight: 600;
