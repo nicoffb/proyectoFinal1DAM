@@ -33,7 +33,7 @@
 
           </li>
           <li class="nav-item">
-            <a class="nav-link active"href="./products.html" th:href="@{/lista}">
+            <a class="nav-link active" href="./products.html" th:href="@{/lista}">
               <i class="fas fa-shopping-cart"></i> Productos
             </a>
           </li>
@@ -51,6 +51,14 @@
     </div>
   </nav>
   <div class="container mt-5">
+    <!-- este div sale solo si los parametros dan error -->
+    <div class="alert alert-warning alert-dismissible" role="alert" th:if="${param.error}"> 
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <span>¡Ainss los Ñus al río de nuevo! ¡No se puede borrar una categoría que tiene asociados
+        productos!</span>
+    </div>HOLAAAAA
     <div>
       <div>
         <div class="tm-bg-primary-dark tm-block tm-block-products">
@@ -72,8 +80,10 @@
                   <th scope="row"><input type="checkbox" /></th>
                   <td class="tm-product-name" th:text="${producto.nombre}"></td>
                   <td th:text="${producto.pvp}"></td>
-                  <td th:text="${producto.descuento}"></td>
-                  <td>
+                  <td><img
+                    th:src="${not (#strings.isEmpty(producto.imagen))} ? ${producto.imagen} : 'http://placehold.it/48x48'"
+                    class="img-responsive icono-producto" alt="imagen" width="5%" /></td> 
+                  <!-- <td>
                     <a href="#" class="tm-product-delete-link">
                       <i class="far fa-trash-alt tm-product-delete-icon"></i>
                     </a>
@@ -82,7 +92,12 @@
                     <a href="#" class="tm-product-delete-link">
                       <i class="far fa-trash-alt tm-product-delete-icon"></i>
                     </a>
-                  </td>
+                  </td> -->
+                  <td class="operaciones"><a href="#"
+                    th:href="@{/editar/{id}(id=${producto.id})}"
+                    class="btn btn-primary">Editar</a>
+                    <button type="button" class="btn btn-danger" data-toggle="modal"
+                      data-target="#delete-modal" th:data-id="${producto.id}">Borrar</button></td>
                 </tr>
 
 
@@ -99,7 +114,8 @@
       </div>
 
     </div>
-    <a href="../templates/formularioProducto.html" th:href="@{/nuevo}" class="btn btn-primary btn-block text-uppercase mb-3">Añadir nuevo producto</a>
+    <a href="../templates/formularioProducto.html" th:href="@{/nuevo}"
+      class="btn btn-primary btn-block text-uppercase mb-3">Añadir nuevo producto</a>
     <button class="btn btn-primary btn-block text-uppercase">
       Borrar productos seleccionados
     </button>
