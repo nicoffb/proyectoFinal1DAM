@@ -51,6 +51,13 @@ public class ProductoController {
         return "products";
     }
 	
+
+	@GetMapping("/detalle")
+    public String detalleProductos(Model model) {
+		model.addAttribute("listaProductos", productoServicio.findAll());
+        return "productoDetalle";
+    }
+	
 	
 	
 	//METODO PARA INVOCAR LA LISTA DE PRODUCTOS a partir de la base de datos
@@ -67,20 +74,19 @@ public class ProductoController {
 	@GetMapping("/detalle/{id}")
 	public String detail(Model model, @PathVariable Long id) {
 		
-		Optional<Producto> result = productoServicio.findById(id);
+		Optional<Producto> producto = productoServicio.findById(id);
 		
-		if (result.isPresent()) {
-			model.addAttribute("producto", result.get());
+		if (producto.isPresent()) {
+			model.addAttribute("producto", producto.get());
 			return "productoDetalle";			
 		} else {
-			return "redirect:/lista";
+			return "redirect:/index";
 		}
 		
 		//tendria q tener otro controller para cuando sea el usuario
 		//redirect lleva a otro controller, sin redirect al html
 		
-		//que es lo de redirect, porque producto detail, pq detalle si lo q quiero es mostrar especificamente
-		//los atributos de un solo id
+	
 		
 	}
 	
