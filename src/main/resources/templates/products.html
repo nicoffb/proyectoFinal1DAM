@@ -52,12 +52,11 @@
   </nav>
   <div class="container mt-5">
     <!-- este div sale solo si los parametros dan error -->
-    <div class="alert alert-warning alert-dismissible" role="alert" th:if="${param.error}"> 
+    <div class="alert alert-warning alert-dismissible" role="alert" th:if="${param.error}">
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
-      <span>¡Ainss los Ñus al río de nuevo! ¡No se puede borrar una categoría que tiene asociados
-        productos!</span>
+      <span>¡No se pueden modificar los tres primeros productos!</span>
     </div>HOLAAAAA
     <div>
       <div>
@@ -80,9 +79,10 @@
                   <th scope="row"><input type="checkbox" /></th>
                   <td class="tm-product-name" th:text="${producto.nombre}"></td>
                   <td th:text="${producto.pvp}"></td>
-                  <td><img
+                  <td th:text="${producto.descuento}"></td>
+                  <!-- <td><img
                     th:src="${not (#strings.isEmpty(producto.imagen))} ? ${producto.imagen} : 'http://placehold.it/48x48'"
-                    class="img-responsive icono-producto" alt="imagen" width="5%" /></td> 
+                    class="img-responsive icono-producto" alt="imagen" width="5%" /></td>  -->
                   <!-- <td>
                     <a href="#" class="tm-product-delete-link">
                       <i class="far fa-trash-alt tm-product-delete-icon"></i>
@@ -93,13 +93,13 @@
                       <i class="far fa-trash-alt tm-product-delete-icon"></i>
                     </a>
                   </td> -->
-                  <td class="operaciones"><a href="#"
-                    th:href="@{/editar/{id}(id=${producto.id})}"
-                    class="btn btn-primary">Editar</a>
-                    <button type="button" class="btn btn-danger" data-toggle="modal"
-                      data-target="#delete-modal" th:data-id="${producto.id}">Borrar</button></td>
-                </tr>
+                  <!--th:href="@{/actualizar/{id}(id=${producto.id})}" href="#" data-bs-toggle="modal"
+                      th:attr="data-bs-target='#removeKart'+ '-' + ${producto.id}"
+                     -->
+                  <td><a th:href="@{/editar/{id}(id=${producto.id})}" class="btn btn-primary">Editar</a>
 
+                  <td> <a href="#" class="btn btn-danger" th:href="@{/borrar/{id}(id=${producto.id})}">Borrar</a></td>
+                </tr>
 
 
               </tbody>
@@ -123,7 +123,7 @@
   <footer class="tm-footer row tm-mt-small">
     <div class="col-12 font-weight-light">
       <p class="text-center text-white mb-0 px-4 small">
-        Copyright &copy; <b>2018</b> All rights reserved.
+        Copyright &copy; <b>2022</b> All rights reserved.
 
         Design: <a rel="nofollow noopener" href="https://templatemo.com" class="tm-footer-link"></a>
       </p>

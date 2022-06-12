@@ -10,4 +10,9 @@ import com.salesianostriana.dam.proyectofinal.servicio.base.ServicioBaseImpl;
 @Service
 public class VentaServicio extends ServicioBaseImpl<Venta, Long, VentaRepository>{
 
+	public VentaServicio(VentaRepository repositorio) {
+		super(repositorio);
+		// TODO Auto-generated constructor stub
+	}
+
 }
