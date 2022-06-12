@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import com.salesianostriana.dam.proyectofinal.model.Producto;
 import com.salesianostriana.dam.proyectofinal.servicio.ProductoServicio;
 import lombok.RequiredArgsConstructor;
@@ -36,11 +37,6 @@ public class ProductoController {
 	@GetMapping("/indexUsuario")
     String inicioUsuario() {
         return "indexUsuario";
-    }
-	
-	@GetMapping("/sumar")
-    String aniadirProducto() {
-        return "formularioProducto";
     }
 	
 	@GetMapping("/auth-error")
@@ -97,30 +93,16 @@ public class ProductoController {
 	}
 	
 	//submitear nuevo producto
-	@PostMapping({ "/submit", "/submit/{id}" })
+	@PostMapping( "/submit")
 	public String procesarFormulario(@ModelAttribute("producto") Producto producto) {
 		
 		productoServicio.save(producto);
-		return "redirect:/products";
+		return "redirect:/lista";
 	}
 
-	
 
 	
-	
-/*La siguiente línea viene del último método, 
- * que se dedica a buscar, para que este método, 
- * muestre también el listado de productos cuando se han buscado, 
- * añadimos al model el objeto tipo bean de búsqueda cuando se está 
- * buscando algún producto
-		
-		
-		model.addAttribute("searchForm", new SearchBean());
-		return "list";
-		
-	}
-	
-
+//EDITAR
 	@GetMapping("/editar/{id}")
 	public String editarProducto(@PathVariable("id") Long id, Model model) {
 
@@ -128,31 +110,73 @@ public class ProductoController {
 
 		if (producto != null) {
 			model.addAttribute("producto", producto);
-			//model.addAttribute("categorias", categoriaService.findAll());
-			return "/sumar";
+			return "/formularioProducto";
 		} else {
-			return "redirect:/admin/producto/";
+			return "redirect:/lista";
 		}
 
 	}
+
 	
-	//many to one 9
-	//te lleva a editar con datos rellenos
-	
-	
-	//necesito post mapping
+
+	@PostMapping("/editar/submit")
+	public String procesarFormularioEdicion(@ModelAttribute("producto") Producto p) {
+		productoServicio.edit(p);
+		return "redirect:/lista";//Volvemos a redirigir la listado a través del controller para pintar la lista actualizada con la modificación hecha
+	}
 	
 	@GetMapping("/borrar/{id}")
-	public String borrarProducto(@PathVariable("id") Long id, Model model) {
-
+	public String borrarCategoria(@PathVariable("id") long id, Model model) {
+		
 		Optional<Producto> producto = productoServicio.findById(id);
-
-		if (producto != null) {
-			productoServicio.delete(producto);
-		}
-
-		return "redirect:/admin/producto/";
-
+		
+		if (producto != null ) {
+			productoServicio.deleteById(id);
+			return "redirect:/lista";
+			} else {
+				
+				return "redirect:/formularioProducto";	
+				
+			}
+		
 	}
-*/
+		
+		@GetMapping("/actualizar/{id}")
+		public String actualizarProducto(@PathVariable("id") long id,  Model model) {
+			model.addAttribute("productos", productoServicio.findAll());
+			model.addAttribute("producto", productoServicio.findById(id).get());
+			model.addAttribute("mostrarFormulario", true);
+			return "producto";
+		}
+		
+		
+		
+		
+		
+		
+		
+/*		
+			Optional<Producto> producto = productoServicio.findById(id);
+		
+		if (producto != null ) {
+			
+			if (productoServicio.recogerIdentificador(producto).get(1)== {1,2,3}) {
+			productoServicio.deleteById(id);
+			return "redirect:/lista";
+			} else {
+				return "redirect:/?error=true";
+			}
+			}return "redirect:/formularioProducto";	
+		
+	}
 }
+
+*/		
+		
+		
+	}
+	
+
+
+
+

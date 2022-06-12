@@ -18,7 +18,7 @@
 <body>
   <nav class="navbar navbar-expand-xl">
     <div class="container h-100">
-      <a class="navbar-brand" href="../templates/products.html" th:href="@{/lista}">
+      <a class="navbar-brand" href="./index.html" th:href="@{/}">
         <h1 class="tm-site-title mb-0">Administración de productos</h1>
       </a>
       <button class="navbar-toggler ml-auto mr-0" type="button" data-toggle="collapse"
@@ -32,7 +32,7 @@
 
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="products.html">
+            <a class="nav-link active" href="./products.html" th:href="@{/lista}">
               <i class="fas fa-shopping-cart"></i> Productos
             </a>
           </li>
@@ -75,10 +75,16 @@
 
 
           <!-- FORMULARIOOOOOOOOOO -->
-          <form class="form-horizontal needs-validation" novalidate method="POST" th:action="@{/submit}" th:object="${producto}">
+          <form class="form-horizontal" novalidate method="POST" th:action=" @{/editar/submit}" th:object="${producto}">
             <div class="row tm-edit-product-row">
               <div class="col-xl-6 col-lg-6 col-md-12">
-                
+
+                <!-- <h1>
+                  <span th:text="${producto.id} ? 'Editar' : 'Nuevo'"></span> PRODUCTOOOOOOOOOOOOOO </h1>
+      
+                <input type="hidden" th:field="*{id}" id="id" /> -->
+
+
                   <div class="form-group mb-3">
                     <label for="nombre">Nombre</label>
                     <input id="nombre" name="nombre" type="text" class="form-control validate" required th:field="*{nombre}" />
@@ -107,12 +113,13 @@
                 </div>
                 <div class="custom-file mt-3 mb-3">
                   <input id="fileInput" type="file" style="display:none;" />
-                  <input type="button" class="btn btn-primary btn-block mx-auto" value="SUBIR IMAGEN" th:field="*{imagen}"
-                    onclick="document.getElementById('fileInput').click();" />
+                  <!-- <input type="button" class="btn btn-primary btn-block mx-auto" value="SUBIR IMAGEN" th:field="*{imagen}"
+                    onclick="document.getElementById('fileInput').click();" /> -->
                 </div>
               </div>
               <div class="col-12">
-                <button type="submit" class="btn btn-primary btn-block text-uppercase">Añadir Producto</button>
+                <button type="submit"  class="btn btn-primary btn-block text-uppercase">
+                  Añadir Producto</button>
               </div>
           </form>
         </div>
@@ -136,6 +143,7 @@
   <!-- https://jqueryui.com/download/ -->
   <script src="js/bootstrap.min.js"></script>
   <!-- https://getbootstrap.com/ -->
+  
 
 </body>
 

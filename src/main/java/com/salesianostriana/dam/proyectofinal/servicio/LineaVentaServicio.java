@@ -17,6 +17,11 @@ public class LineaVentaServicio
 		extends ServicioBaseImpl<LineaVenta, Long, LineaVentaRepository>{
 	
 	
+	public LineaVentaServicio(LineaVentaRepository repositorio) {
+		super(repositorio);
+		// TODO Auto-generated constructor stub
+	}
+
 	public List<LineaVenta> listarPrimeros() {
 		return this.repositorio.findAll()
 				.stream()
