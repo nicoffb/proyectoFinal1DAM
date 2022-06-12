@@ -93,7 +93,7 @@ public class ProductoController {
 	}
 	
 	//submitear nuevo producto
-	@PostMapping( "/submit")
+	@PostMapping( { "/submit", "/submit/{id}" })
 	public String procesarFormulario(@ModelAttribute("producto") Producto producto) {
 		
 		productoServicio.save(producto);
@@ -104,26 +104,29 @@ public class ProductoController {
 	
 //EDITAR
 	@GetMapping("/editar/{id}")
-	public String editarProducto(@PathVariable("id") Long id, Model model) {
+	public String editarProducto(@PathVariable("id") long id, Model model) {
 
 		Optional<Producto> producto = productoServicio.findById(id);
 
 		if (producto != null) {
 			model.addAttribute("producto", producto);
-			return "/formularioProducto";
+			return "formularioProducto";
 		} else {
 			return "redirect:/lista";
 		}
 
 	}
 
-	
+	//submitear edicion, tiene que ser optional?
 
 	@PostMapping("/editar/submit")
 	public String procesarFormularioEdicion(@ModelAttribute("producto") Producto p) {
 		productoServicio.edit(p);
 		return "redirect:/lista";//Volvemos a redirigir la listado a través del controller para pintar la lista actualizada con la modificación hecha
 	}
+	//sin embargo no sustituye , solo añade, supongo que porque no coge el id
+	
+	
 	
 	@GetMapping("/borrar/{id}")
 	public String borrarCategoria(@PathVariable("id") long id, Model model) {
@@ -145,7 +148,7 @@ public class ProductoController {
 		public String actualizarProducto(@PathVariable("id") long id,  Model model) {
 			model.addAttribute("productos", productoServicio.findAll());
 			model.addAttribute("producto", productoServicio.findById(id).get());
-			model.addAttribute("mostrarFormulario", true);
+			//model.addAttribute("mostrarFormulario", true);
 			return "producto";
 		}
 		
