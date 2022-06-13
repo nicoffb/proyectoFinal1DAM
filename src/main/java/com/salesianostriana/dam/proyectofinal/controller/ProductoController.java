@@ -55,11 +55,6 @@ public class ProductoController {
         return "products";
     }
 	
-	@GetMapping("/listaVentas")
-    public String listaVentas(Model model) {
-		model.addAttribute("listaVentas", ventaServicio.findAll());
-        return "ventas";
-    }
 	
 	
 	
@@ -105,7 +100,6 @@ public class ProductoController {
 	//submitear nuevo producto
 	@PostMapping( "/submit")
 	public String procesarFormulario(@ModelAttribute("producto") Producto producto) {
-		
 		productoServicio.save(producto);
 		return "redirect:/lista";
 	}
@@ -114,13 +108,13 @@ public class ProductoController {
 	
 //EDITAR
 	@GetMapping("/editar/{id}")
-	public String editarProducto(@PathVariable("id") Long id, Model model) {
+	public String editarProducto(@PathVariable("id") long id, Model model) {
 
 		Optional<Producto> producto = productoServicio.findById(id);
 
 		if (producto != null) {
 			model.addAttribute("producto", producto);
-			return "/formularioProducto";
+			return "formularioProducto";
 		} else {
 			return "redirect:/lista";
 		}
