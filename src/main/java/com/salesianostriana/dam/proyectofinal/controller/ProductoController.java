@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.salesianostriana.dam.proyectofinal.model.Producto;
 import com.salesianostriana.dam.proyectofinal.servicio.ProductoServicio;
+import com.salesianostriana.dam.proyectofinal.servicio.VentaServicio;
+
 import lombok.RequiredArgsConstructor;
 
 
@@ -27,6 +29,8 @@ public class ProductoController {
 	
 	@Autowired
 	private final ProductoServicio productoServicio;
+	
+	private final VentaServicio ventaServicio;
 	
 	@GetMapping("/indexAdmin")
     String inicio() {
@@ -49,6 +53,12 @@ public class ProductoController {
     public String listaProductos(Model model) {
 		model.addAttribute("listaProductos", productoServicio.findAll());
         return "products";
+    }
+	
+	@GetMapping("/listaVentas")
+    public String listaVentas(Model model) {
+		model.addAttribute("listaVentas", ventaServicio.findAll());
+        return "ventas";
     }
 	
 	
