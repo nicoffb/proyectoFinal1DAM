@@ -27,7 +27,7 @@ public abstract class ServicioBaseImpl<T, ID, R extends JpaRepository<T, ID>> im
 
 	@Override
 	public Optional<T> findById(ID id) {
-		return Optional.ofNullable(repositorio.findById(id).orElse(null));
+		return repositorio.findById(id);
 	}
 
 	@Override

@@ -51,13 +51,6 @@ public class ProductoController {
         return "products";
     }
 	
-
-	@GetMapping("/detalle")
-    public String detalleProductos(Model model) {
-		model.addAttribute("listaProductos", productoServicio.findAll());
-        return "productoDetalle";
-    }
-	
 	
 	
 	//METODO PARA INVOCAR LA LISTA DE PRODUCTOS a partir de la base de datos
@@ -74,24 +67,25 @@ public class ProductoController {
 	@GetMapping("/detalle/{id}")
 	public String detail(Model model, @PathVariable Long id) {
 		
-		Optional<Producto> producto = productoServicio.findById(id);
+		Optional<Producto> p = productoServicio.findById(id);
 		
-		if (producto.isPresent()) {
-			model.addAttribute("producto", producto.get());
+		if (p != null) {
+			model.addAttribute("producto", p.get());
 			return "productoDetalle";			
 		} else {
-			return "redirect:/index";
+			return "redirect:/lista";
 		}
 		
 		//tendria q tener otro controller para cuando sea el usuario
 		//redirect lleva a otro controller, sin redirect al html
 		
-	
+		//que es lo de redirect, porque producto detail, pq detalle si lo q quiero es mostrar especificamente
+		//los atributos de un solo id
 		
 	}
 	
 	
-	//nuevo producto
+//AÑADIR
 	@GetMapping("/nuevo")
 	public String mostrarFormulario(Model model) {
 		model.addAttribute("producto", new Producto());
@@ -99,7 +93,7 @@ public class ProductoController {
 	}
 	
 	//submitear nuevo producto
-	@PostMapping( { "/submit", "/submit/{id}" })
+	@PostMapping( "/submit")
 	public String procesarFormulario(@ModelAttribute("producto") Producto producto) {
 		
 		productoServicio.save(producto);
@@ -110,29 +104,30 @@ public class ProductoController {
 	
 //EDITAR
 	@GetMapping("/editar/{id}")
-	public String editarProducto(@PathVariable("id") long id, Model model) {
+	public String editarProducto(@PathVariable("id") Long id, Model model) {
 
 		Optional<Producto> producto = productoServicio.findById(id);
 
 		if (producto != null) {
 			model.addAttribute("producto", producto);
-			return "formularioProducto";
+			return "/formularioProducto";
 		} else {
 			return "redirect:/lista";
 		}
 
 	}
 
-	//submitear edicion, tiene que ser optional?
-
+	
 	@PostMapping("/editar/submit")
 	public String procesarFormularioEdicion(@ModelAttribute("producto") Producto p) {
 		productoServicio.edit(p);
 		return "redirect:/lista";//Volvemos a redirigir la listado a través del controller para pintar la lista actualizada con la modificación hecha
 	}
-	//sin embargo no sustituye , solo añade, supongo que porque no coge el id
 	
 	
+	
+	
+//BORRAR	
 	
 	@GetMapping("/borrar/{id}")
 	public String borrarCategoria(@PathVariable("id") long id, Model model) {
@@ -150,13 +145,7 @@ public class ProductoController {
 		
 	}
 		
-		@GetMapping("/actualizar/{id}")
-		public String actualizarProducto(@PathVariable("id") long id,  Model model) {
-			model.addAttribute("productos", productoServicio.findAll());
-			model.addAttribute("producto", productoServicio.findById(id).get());
-			//model.addAttribute("mostrarFormulario", true);
-			return "producto";
-		}
+		
 		
 		
 		
@@ -165,6 +154,20 @@ public class ProductoController {
 		
 		
 /*		
+ * @GetMapping("/actualizar/{id}")
+		public String actualizarProducto(@PathVariable("id") long id,  Model model) {
+			model.addAttribute("productos", productoServicio.findAll());
+			model.addAttribute("producto", productoServicio.findById(id).get());
+			model.addAttribute("mostrarFormulario", true);
+			return "producto";
+		}
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
 			Optional<Producto> producto = productoServicio.findById(id);
 		
 		if (producto != null ) {

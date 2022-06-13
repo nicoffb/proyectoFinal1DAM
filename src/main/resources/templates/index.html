@@ -139,7 +139,7 @@
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
                     <p th:text="${producto.id}"></p>
-                    <a th:href="@{/detalle/{id}}"><button type="button"
+                    <a th:href="@{/detalle/{id}(id=${producto.id})}"><button type="button"
                         class="btn btn-warning btn-outline-secondary">Ver</button> </a>
                     <!-- puede coger el id de cada producto aunque no lo tenga puesto? 2022-06-12 21:24:27.702  WARN 26320 --- [nio-9000-exec-9] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "{id}"]-->
                     <button type="button" class="btn btn-success btn-outline-secondary">Editar</button>
