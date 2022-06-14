@@ -5,6 +5,8 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.salesianostriana.dam.proyectofinal.model.LineaVenta;
 import com.salesianostriana.dam.proyectofinal.model.Venta;
 import com.salesianostriana.dam.proyectofinal.repository.VentaRepository;
 import com.salesianostriana.dam.proyectofinal.servicio.base.ServicioBaseImpl;
@@ -13,8 +15,17 @@ import com.salesianostriana.dam.proyectofinal.servicio.base.ServicioBaseImpl;
 @Service
 public class VentaServicio extends ServicioBaseImpl<Venta, Long, VentaRepository>{
 	
+	//este si
+		public VentaServicio(VentaRepository repositorio) {
+			super(repositorio);
+			// TODO Auto-generated constructor stub
+		}
+	
 	@Autowired
 	private VentaRepository repositorio;
+	
+	@Autowired
+	private LineaVentaServicio lineaVentaServicio;
 	
 	public List<Venta> findAll() {
 		return repositorio.findAll();
@@ -35,10 +46,19 @@ public class VentaServicio extends ServicioBaseImpl<Venta, Long, VentaRepository
 	}
 	*/
 	
-	//este si
-	public VentaServicio(VentaRepository repositorio) {
-		super(repositorio);
-		// TODO Auto-generated constructor stub
+	
+	
+	public double CalcularTotalVenta (Venta v) {
+		double sumaTotal = 0;
+		
+		for (LineaVenta lv : v.getLineas()) {
+			sumaTotal += lineaVentaServicio.CalcularSubtotal(lv);
+		}
+			v.setPrecioTotal(sumaTotal);
+			repositorio.save(v);
+			return sumaTotal;
+		}
+		
 	}
 
-}
+

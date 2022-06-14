@@ -67,13 +67,13 @@ import lombok.RequiredArgsConstructor;
 		@GetMapping("/editarLinea/{id}")
 		public String editarLinea(@PathVariable("id") long id, Model model) {
 			
-		 LineaVenta linea = lineaventaServicio.findById3(id);
-		 
-			
-			if (linea != null) {
+			Optional<LineaVenta> resultado = lineaventaServicio.findById(id);
+				
+			if(resultado.isPresent())	{
+				LineaVenta linea = resultado.get();
 				model.addAttribute("linea", linea);
 				return "formularioLinea";
-			} else {
+			}else {
 				return "redirect:/lineas/listaLineas";
 			}
 			

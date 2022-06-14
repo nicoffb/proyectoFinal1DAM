@@ -60,13 +60,14 @@ import lombok.RequiredArgsConstructor;
 		
 		
 		@GetMapping("/editarVenta/{id}")
-		public String editarVenta(@PathVariable("id") long id, Model model) {
+		public String editarVenta(@PathVariable("id") long id, Model model) {                            
 			
 			Venta venta = ventaServicio.findById2(id);
 			
 			if (venta != null) {
 				model.addAttribute("venta", venta);
-				return "redirect:/lineas/";
+				model.addAttribute("listaLineas", venta.getLineas());
+				return "lineas";
 			} else {
 				return "redirect:/listaVenta";
 			}

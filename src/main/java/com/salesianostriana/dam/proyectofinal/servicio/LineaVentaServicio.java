@@ -30,5 +30,14 @@ public class LineaVentaServicio
 				
 	}
 	
+	
+	public double CalcularSubtotal (LineaVenta l) {
+		double precioConDescuento= 0;
+		precioConDescuento += (l.getVideojuego().getPvp())*(1-l.getVideojuego().getDescuento()/100)*l.getCantidad();
+		l.setPrecioUnitario(precioConDescuento);
+		repositorio.save(l);
+		return precioConDescuento;
+	}
+	
 
 }

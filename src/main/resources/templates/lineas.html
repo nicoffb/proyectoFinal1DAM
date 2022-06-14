@@ -89,9 +89,9 @@
                   <td th:text="${lineaVenta.precioUnitario}">pre</td>
                   <td th:text="${lineaVenta.cantidad}">fecha</td>
                  
-                  <td><a th:href="@{editarLinea/{id}(id=${lineaVenta.id})}" class="btn btn-primary">Editar</a>
+                  <td><a th:href="@{/editarLinea/{id}(id=${lineaVenta.id})}" class="btn btn-primary">Editar</a>
 
-                  <td> <a href="#" class="btn btn-danger" th:href="@{borrarLinea/{id}(id=${lineaVenta.id})}">Borrar</a></td> 
+                  <td> <a href="#" class="btn btn-danger" th:href="@{/borrarLinea/{id}(id=${lineaVenta.id})}">Borrar</a></td> 
                 </tr>
 
 
