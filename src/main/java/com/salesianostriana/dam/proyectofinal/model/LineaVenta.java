@@ -37,6 +37,19 @@ public class LineaVenta {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
 	
+	// Aqui deben estar los métodos helper de la asociación bidireccional entre Venta - LineaVenta
+	
+	public void sumarVenta(Venta venta) {
+		this.venta = venta;
+		venta.getLineas().add(this);
+	}
+	
+	public void borrarVenta(Venta venta) {
+		venta.getLineas().remove(this);
+		this.venta = null;
+	}
+	
+	//faltarian los de listado?
 	
 
 }

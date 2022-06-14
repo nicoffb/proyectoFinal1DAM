@@ -27,6 +27,9 @@ import lombok.RequiredArgsConstructor;
 		
 		@Autowired
 		private LineaVentaServicio lineaventaServicio;
+		
+		@Autowired
+		private VentaServicio ventaServicio;
 	
 	
 		
@@ -34,6 +37,8 @@ import lombok.RequiredArgsConstructor;
 		public String listaVentas(Model model) {
 			
 			model.addAttribute("listaLineas", lineaventaServicio.findAll());
+			
+			// no se si cargarla desde aqui o desde el html Venta venta = ventaServicio.findById3(linea.id);
 			return "lineas";
 		}
 		
@@ -63,6 +68,7 @@ import lombok.RequiredArgsConstructor;
 		public String editarLinea(@PathVariable("id") long id, Model model) {
 			
 		 LineaVenta linea = lineaventaServicio.findById3(id);
+		 
 			
 			if (linea != null) {
 				model.addAttribute("linea", linea);

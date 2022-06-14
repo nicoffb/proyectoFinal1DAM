@@ -112,8 +112,8 @@ public class ProductoController {
 
 		Optional<Producto> producto = productoServicio.findById(id);
 
-		if (producto != null) {
-			model.addAttribute("producto", producto);
+		if (producto.isPresent()) {
+			model.addAttribute("producto", producto.get());
 			return "formularioProducto";
 		} else {
 			return "redirect:/lista";

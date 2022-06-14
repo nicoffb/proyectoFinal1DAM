@@ -81,19 +81,22 @@
                 </tr>
               </thead>
               <tbody th:each="venta : ${listaVentas}">
-                <!--EJEMPLO  -->
+                <!--EJEMPLO DOBLE BUCLE PARA IR SACANDO LAS LINEAAS DE VENTAS  -->
                 <tr>
                   <th scope="row"><input type="checkbox" /></th>
                   <td th:text="${venta.id}">id</td>
                   <td th:text="${venta.comprador}">compra</td>
                   <td th:text="${venta.precioTotal}">pre</td>
                   <td th:text="${venta.fechaCompra}">fecha</td>
+                  
+                  
                  
                   <td><a th:href="@{/editarVenta/{id}(id=${venta.id})}" class="btn btn-primary">Editar</a>
 
                   <td> <a href="#" class="btn btn-danger" th:href="@{/borrarVenta/{id}(id=${venta.id})}">Borrar</a></td> 
                 </tr>
-
+				
+				
 
               </tbody>
             </table>

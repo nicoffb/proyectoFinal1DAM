@@ -66,13 +66,13 @@ import lombok.RequiredArgsConstructor;
 			
 			if (venta != null) {
 				model.addAttribute("venta", venta);
-				return "formularioVenta";
+				return "redirect:/lineas/";
 			} else {
 				return "redirect:/listaVenta";
 			}
 			
 		}
-		
+		//58 es la que tiene 2 lineas
 		
 
 		@GetMapping("/borrarVenta/{id}")
