@@ -30,8 +30,9 @@ import lombok.ToString;
 public class Venta {
 	
 	private double precioTotal;
+	//como hago para que correlacione?
 	
-	@DateTimeFormat(pattern="MM/dd/yyyy")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate fechaCompra;
 	
 	@Builder.Default

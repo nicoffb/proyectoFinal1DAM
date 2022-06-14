@@ -31,6 +31,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mx-auto h-100">
 
+          
           <li class="nav-item">
             <a class="nav-link active" href="./products.html" th:href="@{/lista}">
               <i class="fas fa-shopping-cart"></i> Productos
@@ -42,13 +43,8 @@
               <i class="fas fa-shopping-cart"></i> Ventas
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="./products.html" th:href="@{/lineas/}">
-              <i class="fas fa-shopping-cart"></i> Lineas de Ventas
-            </a>
-          </li>
-
-          </li>
+          
+          
         </ul>
         <ul class="navbar-nav">
           <li class="nav-item">
@@ -67,7 +63,7 @@
         <span aria-hidden="true">&times;</span>
       </button>
       <span>¡No se pueden modificar los tres primeros productos!</span>
-    </div>HOLAAAAA
+    </div>
     <div>
       <div>
         <div class="tm-bg-primary-dark tm-block tm-block-products">
@@ -76,47 +72,41 @@
               <thead>
                 <tr>
                   <th scope="col">&nbsp;</th>
-                  <th scope="col">NOMBRE DEL PRODUCTO</th>
-                  <th scope="col">PVP </th>
-                  <th scope="col">DESCUENTO</th>
+                  <th scope="col">ID</th>
+                  <th scope="col">COMPRADOR </th>
+                  <th scope="col">PRECIOTOTAL</th>
+                  <th scope="col">FECHA</th>
                   <th scope="col">EDITAR &nbsp;</th>
                   <th scope="col">BORRAR &nbsp;</th>
                 </tr>
               </thead>
-              <tbody th:each="producto : ${listaProductos}">
-                <!--EJEMPLO  -->
+              <tbody th:each="venta : ${listaVentas}">
+                <!--EJEMPLO DOBLE BUCLE PARA IR SACANDO LAS LINEAAS DE VENTAS  -->
                 <tr>
                   <th scope="row"><input type="checkbox" /></th>
-                  <td class="tm-product-name" th:text="${producto.nombre}"></td>
-                  <td th:text="${producto.pvp}"></td>
-                  <td th:text="${producto.descuento}"></td>
-                  <!-- <td><img
-                    th:src="${not (#strings.isEmpty(producto.imagen))} ? ${producto.imagen} : 'http://placehold.it/48x48'"
-                    class="img-responsive icono-producto" alt="imagen" width="5%" /></td>  -->
-                  <!-- <td>
-                    <a href="#" class="tm-product-delete-link">
-                      <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                    </a>
-                  </td>
-                  <td>
-                    <a href="#" class="tm-product-delete-link">
-                      <i class="far fa-trash-alt tm-product-delete-icon"></i>
-                    </a>
-                  </td> -->
-                  <!--th:href="@{/actualizar/{id}(id=${producto.id})}" href="#" data-bs-toggle="modal"
-                      th:attr="data-bs-target='#removeKart'+ '-' + ${producto.id}"
-                     -->
-                  <td><a th:href="@{/editar/{id}(id=${producto.id})}" class="btn btn-primary">Editar</a>
+                  <td th:text="${venta.id}">id</td>
+                  <td th:text="${venta.comprador}">compra</td>
+                  <td th:text="${venta.precioTotal}">pre</td>
+                  <td th:text="${venta.fechaCompra}">fecha</td>
+                  
+                  
+                 
+                  <td><a th:href="@{/editarVenta/{id}(id=${venta.id})}" class="btn btn-primary">Editar</a>
 
-                  <td> <a href="#" class="btn btn-danger" th:href="@{/borrar/{id}(id=${producto.id})}">Borrar</a></td>
+                  <td> <a href="#" class="btn btn-danger" th:href="@{/borrarVenta/{id}(id=${venta.id})}">Borrar</a></td> 
                 </tr>
-
+				
+				
 
               </tbody>
             </table>
           </div>
           <!-- table container -->
 
+
+         <!--  -->
+
+          
         </div>
 
 
@@ -124,8 +114,8 @@
       </div>
 
     </div>
-    <a href="../templates/formularioProducto.html" th:href="@{/nuevo}"
-      class="btn btn-primary btn-block text-uppercase mb-3">Añadir nuevo producto</a>
+    <a href="../templates/formularioProducto.html" th:href="@{/nuevaVenta}"
+      class="btn btn-primary btn-block text-uppercase mb-3">Añadir nueva Venta</a>
     <button class="btn btn-primary btn-block text-uppercase">
       Borrar productos seleccionados
     </button>

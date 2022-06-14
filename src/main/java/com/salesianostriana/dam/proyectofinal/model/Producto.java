@@ -31,7 +31,6 @@ public class Producto {
 	private double pvp;
 	private double descuento;
 	@Id
-	@Column(name = "id")
 	@SequenceGenerator(initialValue=500, 
 	                   		allocationSize=1,
 	                        name = "id", 
@@ -41,7 +40,8 @@ public class Producto {
 	 
 	 
 		//@Id
-		//@GeneratedValue(strategy=GenerationType.AUTO)
+	//@GeneratedValue(strategy=GenerationType.AUTO)
+	//private long id;
 	
 		
 	

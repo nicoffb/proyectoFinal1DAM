@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.salesianostriana.dam.proyectofinal.model.Producto;
 import com.salesianostriana.dam.proyectofinal.servicio.ProductoServicio;
+import com.salesianostriana.dam.proyectofinal.servicio.VentaServicio;
+
 import lombok.RequiredArgsConstructor;
 
 
@@ -27,6 +29,8 @@ public class ProductoController {
 	
 	@Autowired
 	private final ProductoServicio productoServicio;
+	
+	private final VentaServicio ventaServicio;
 	
 	@GetMapping("/indexAdmin")
     String inicio() {
@@ -53,6 +57,7 @@ public class ProductoController {
 	
 	
 	
+	
 	//METODO PARA INVOCAR LA LISTA DE PRODUCTOS a partir de la base de datos
 	@GetMapping("/")
 	public String index(Model model) {
@@ -67,10 +72,10 @@ public class ProductoController {
 	@GetMapping("/detalle/{id}")
 	public String detail(Model model, @PathVariable Long id) {
 		
-		Optional<Producto> result = productoServicio.findById(id);
+		Optional<Producto> p = productoServicio.findById(id);
 		
-		if (result.isPresent()) {
-			model.addAttribute("producto", result.get());
+		if (p != null) {
+			model.addAttribute("producto", p.get());
 			return "productoDetalle";			
 		} else {
 			return "redirect:/lista";
@@ -85,7 +90,7 @@ public class ProductoController {
 	}
 	
 	
-	//nuevo producto
+//AÑADIR
 	@GetMapping("/nuevo")
 	public String mostrarFormulario(Model model) {
 		model.addAttribute("producto", new Producto());
@@ -95,7 +100,6 @@ public class ProductoController {
 	//submitear nuevo producto
 	@PostMapping( "/submit")
 	public String procesarFormulario(@ModelAttribute("producto") Producto producto) {
-		
 		productoServicio.save(producto);
 		return "redirect:/lista";
 	}
@@ -104,13 +108,13 @@ public class ProductoController {
 	
 //EDITAR
 	@GetMapping("/editar/{id}")
-	public String editarProducto(@PathVariable("id") Long id, Model model) {
+	public String editarProducto(@PathVariable("id") long id, Model model) {
 
 		Optional<Producto> producto = productoServicio.findById(id);
 
-		if (producto != null) {
-			model.addAttribute("producto", producto);
-			return "/formularioProducto";
+		if (producto.isPresent()) {
+			model.addAttribute("producto", producto.get());
+			return "formularioProducto";
 		} else {
 			return "redirect:/lista";
 		}
@@ -118,12 +122,16 @@ public class ProductoController {
 	}
 
 	
-
 	@PostMapping("/editar/submit")
 	public String procesarFormularioEdicion(@ModelAttribute("producto") Producto p) {
 		productoServicio.edit(p);
 		return "redirect:/lista";//Volvemos a redirigir la listado a través del controller para pintar la lista actualizada con la modificación hecha
 	}
+	
+	
+	
+	
+//BORRAR	
 	
 	@GetMapping("/borrar/{id}")
 	public String borrarCategoria(@PathVariable("id") long id, Model model) {
@@ -141,13 +149,7 @@ public class ProductoController {
 		
 	}
 		
-		@GetMapping("/actualizar/{id}")
-		public String actualizarProducto(@PathVariable("id") long id,  Model model) {
-			model.addAttribute("productos", productoServicio.findAll());
-			model.addAttribute("producto", productoServicio.findById(id).get());
-			model.addAttribute("mostrarFormulario", true);
-			return "producto";
-		}
+		
 		
 		
 		
@@ -156,6 +158,20 @@ public class ProductoController {
 		
 		
 /*		
+ * @GetMapping("/actualizar/{id}")
+		public String actualizarProducto(@PathVariable("id") long id,  Model model) {
+			model.addAttribute("productos", productoServicio.findAll());
+			model.addAttribute("producto", productoServicio.findById(id).get());
+			model.addAttribute("mostrarFormulario", true);
+			return "producto";
+		}
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
 			Optional<Producto> producto = productoServicio.findById(id);
 		
 		if (producto != null ) {
