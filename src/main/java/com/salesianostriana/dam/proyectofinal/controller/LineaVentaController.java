@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.salesianostriana.dam.proyectofinal.model.LineaVenta;
 import com.salesianostriana.dam.proyectofinal.model.Venta;
 import com.salesianostriana.dam.proyectofinal.servicio.LineaVentaServicio;
 import com.salesianostriana.dam.proyectofinal.servicio.ProductoServicio;
@@ -20,79 +21,78 @@ import lombok.RequiredArgsConstructor;
 
 
 	@Controller
-	@RequiredArgsConstructor
-	public class VentaController {
+	@RequestMapping("/lineas")
+	public class LineaVentaController {
 		
 		
 		@Autowired
 		private LineaVentaServicio lineaventaServicio;
-		
-		@Autowired
-		private VentaServicio ventaServicio;
+	
 	
 		
-		@GetMapping("/listaVentas")
+		@GetMapping("/")
 		public String listaVentas(Model model) {
 			
-			model.addAttribute("listaVentas", ventaServicio.findAll());
-			return "ventas";
+			model.addAttribute("listaLineas", lineaventaServicio.findAll());
+			return "lineas";
 		}
 		
 		
 		
-		@GetMapping("/nuevaVenta")
-		public String nuevaVenta(Model model) {
-			model.addAttribute("venta", new Venta());
-			return "formularioVenta";
+		@GetMapping("/nuevaLinea")
+		public String nuevaLinea(Model model) {
+			model.addAttribute("linea", new LineaVenta());
+			return "formularioLinea";
 		}
 		
 
 		
-		@PostMapping("/nuevaVenta/submit")
-		public String submitNuevaVenta(@ModelAttribute("venta") Venta venta, Model model) {
+		@PostMapping("/nuevaLinea/submit")
+		public String submitNuevaLinea(@ModelAttribute("linea") LineaVenta linea, Model model) {
 			
-			ventaServicio.save(venta);
+			lineaventaServicio.save(linea);
 			
 			//En el redirect hay que poner la ruta completa del controller al que queremos ir, 
 			//incluyendo lo escrito dentro del @RequestMapping del comienzo de la clase
-			return "redirect:/listaVentas/";
+			//PORQUE ME DUPLICA LINEAS
+			return "redirect:/lineas/";
 		}
 		
 		
-		@GetMapping("/editarVenta/{id}")
-		public String editarVenta(@PathVariable("id") long id, Model model) {
+		@GetMapping("/editarLinea/{id}")
+		public String editarLinea(@PathVariable("id") long id, Model model) {
 			
-			Venta venta = ventaServicio.findById2(id);
+		 LineaVenta linea = lineaventaServicio.findById3(id);
 			
-			if (venta != null) {
-				model.addAttribute("venta", venta);
-				return "formularioVenta";
+			if (linea != null) {
+				model.addAttribute("linea", linea);
+				return "formularioLinea";
 			} else {
-				return "redirect:/listaVenta";
+				return "redirect:/lineas/listaLineas";
 			}
 			
 		}
 		
 		
 
-		@GetMapping("/borrarVenta/{id}")
+		@GetMapping("/borrarLinea/{id}")
 		public String borrarVenta(@PathVariable("id") Long id, Model model) {
 			
-			Venta venta = ventaServicio.findById2(id);
+			LineaVenta linea = lineaventaServicio.findById3(id);
 			
-			if (venta!= null) {
+			if (linea!= null) {
 				
-				if (ventaServicio != null) {
-					ventaServicio.delete(venta);				
+				if (lineaventaServicio != null) {
+					lineaventaServicio.delete(linea);				
 				} else {
 					
 				//Se ha agregado el parámetro error con valor true a la ruta	
-					return "redirect:/listaVentas";
+					return "redirect:/lineas/";
 				}
 				
 			} 
 
-			return "redirect:/listaVentas";
+			return "redirect:/lineas/";
 			
 			
 		}

@@ -73,25 +73,25 @@
                 <tr>
                   <th scope="col">&nbsp;</th>
                   <th scope="col">ID</th>
-                  <th scope="col">COMPRADOR </th>
-                  <th scope="col">PRECIOTOTAL</th>
-                  <th scope="col">FECHA</th>
+                  <th scope="col">VIDEOJUEGO </th>
+                  <th scope="col">PRECIO UNITARIO</th>
+                  <th scope="col">CANTIDAD</th>
                   <th scope="col">EDITAR &nbsp;</th>
                   <th scope="col">BORRAR &nbsp;</th>
                 </tr>
               </thead>
-              <tbody th:each="venta : ${listaVentas}">
+              <tbody th:each="lineaVenta : ${listaLineas}">
                 <!--EJEMPLO  -->
                 <tr>
                   <th scope="row"><input type="checkbox" /></th>
-                  <td th:text="${venta.id}">id</td>
-                  <td th:text="${venta.comprador}">compra</td>
-                  <td th:text="${venta.precioTotal}">pre</td>
-                  <td th:text="${venta.fechaCompra}">fecha</td>
+                  <td th:text="${lineaVenta.id}">id</td>
+                  <td th:text="${lineaVenta.videojuego.nombre}">compra</td>
+                  <td th:text="${lineaVenta.precioUnitario}">pre</td>
+                  <td th:text="${lineaVenta.cantidad}">fecha</td>
                  
-                  <td><a th:href="@{/editarVenta/{id}(id=${venta.id})}" class="btn btn-primary">Editar</a>
+                  <td><a th:href="@{editarLinea/{id}(id=${lineaVenta.id})}" class="btn btn-primary">Editar</a>
 
-                  <td> <a href="#" class="btn btn-danger" th:href="@{/borrarVenta/{id}(id=${venta.id})}">Borrar</a></td> 
+                  <td> <a href="#" class="btn btn-danger" th:href="@{borrarLinea/{id}(id=${lineaVenta.id})}">Borrar</a></td> 
                 </tr>
 
 
@@ -111,8 +111,8 @@
       </div>
 
     </div>
-    <a href="../templates/formularioProducto.html" th:href="@{/nuevaVenta}"
-      class="btn btn-primary btn-block text-uppercase mb-3">Añadir nueva Venta</a>
+    <a href="../templates/formularioProducto.html" th:href="@{/lineas/nuevaLinea}"
+      class="btn btn-primary btn-block text-uppercase mb-3">Añadir nuevo producto</a>
     <button class="btn btn-primary btn-block text-uppercase">
       Borrar productos seleccionados
     </button>
