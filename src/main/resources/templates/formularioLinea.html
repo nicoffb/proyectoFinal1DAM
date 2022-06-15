@@ -79,7 +79,8 @@
 
             <div class="row tm-edit-product-row">
               <div class="col-xl-6 col-lg-6 col-md-12">
-                <input type="hidden" th:field="*{id}" id="id" > 
+                <input type="hidden" th:field="*{id}" id="id" >
+                <input type="hidden" th:field="*{venta}" id="venta"> 
 
 
                 <div class="form-group mb-3">
@@ -87,13 +88,6 @@
                   <input id="videojuego" name="videojuego" type="text" class="form-control validate" required
                     th:field="*{videojuego}"></div>
 
-                <div class="row">
-                  <div class="form-group mb-3 col-xs-12 col-sm-6">
-                    <label for="precioUnitario">Precio Unitario</label>
-                    <input id="precioUnitario" name="precioUnitario" type="text" class="form-control validate"
-                      data-large-mode="true" th:field="*{precioUnitario}" >
-                  </div>
-                </div>
 
                 <div class="row">
                   <div class="form-group mb-3 col-xs-12 col-sm-6">

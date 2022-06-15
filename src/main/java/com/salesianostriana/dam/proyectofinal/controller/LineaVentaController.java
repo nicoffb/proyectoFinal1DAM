@@ -44,9 +44,11 @@ import lombok.RequiredArgsConstructor;
 		
 		
 		
-		@GetMapping("/nuevaLinea")
-		public String nuevaLinea(Model model) {
-			model.addAttribute("linea", new LineaVenta());
+		@GetMapping("/nuevaLinea/{id}")
+		public String nuevaLinea(@PathVariable("id") long id, Model model) {
+			LineaVenta nuevaLinea = new LineaVenta();
+			nuevaLinea.setVenta(ventaServicio.findById(id).get());
+			model.addAttribute("linea", nuevaLinea);
 			return "formularioLinea";
 		}
 		
@@ -54,13 +56,13 @@ import lombok.RequiredArgsConstructor;
 		
 		@PostMapping("/nuevaLinea/submit")
 		public String submitNuevaLinea(@ModelAttribute("linea") LineaVenta linea, Model model) {
-			
+			linea.setPrecioUnitario(lineaventaServicio.CalcularSubtotal(linea));
 			lineaventaServicio.save(linea);
 			
 			//En el redirect hay que poner la ruta completa del controller al que queremos ir, 
 			//incluyendo lo escrito dentro del @RequestMapping del comienzo de la clase
 			//PORQUE ME DUPLICA LINEAS
-			return "redirect:/lineas/";
+			return "redirect:/editarVenta/" + linea.getVenta().getId();
 		}
 		
 		
@@ -74,7 +76,7 @@ import lombok.RequiredArgsConstructor;
 				model.addAttribute("linea", linea);
 				return "formularioLinea";
 			}else {
-				return "redirect:/lineas/listaLineas";
+				return "redirect:/editarVenta/";
 			}
 			
 		}
@@ -84,26 +86,18 @@ import lombok.RequiredArgsConstructor;
 		@GetMapping("/borrarLinea/{id}")
 		public String borrarVenta(@PathVariable("id") Long id, Model model) {
 			
-			LineaVenta linea = lineaventaServicio.findById3(id);
+			Optional<LineaVenta> linea = lineaventaServicio.findById(id);
 			
-			if (linea!= null) {
-				
-				if (lineaventaServicio != null) {
-					lineaventaServicio.delete(linea);				
+			if (linea.isPresent()) {
+					lineaventaServicio.deleteById(id);
+					return "redirect:/editarVenta/" + linea.get().getVenta().getId();
 				} else {
 					
-				//Se ha agregado el parámetro error con valor true a la ruta	
-					return "redirect:/lineas/";
+				    return "redirect:/lineas/";
 				}
 				
-			} 
-
-			return "redirect:/lineas/";
-			
-			
-		}
+		    }
 				
 		
 
-}
-
+		}

@@ -74,7 +74,7 @@ public class ProductoController {
 		
 		Optional<Producto> p = productoServicio.findById(id);
 		
-		if (p != null) {
+		if (p.isPresent()) {
 			model.addAttribute("producto", p.get());
 			return "productoDetalle";			
 		} else {
@@ -138,7 +138,7 @@ public class ProductoController {
 		
 		Optional<Producto> producto = productoServicio.findById(id);
 		
-		if (producto != null ) {
+		if (producto.isPresent() ) {
 			productoServicio.deleteById(id);
 			return "redirect:/lista";
 			} else {

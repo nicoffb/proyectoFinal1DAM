@@ -62,11 +62,11 @@ import lombok.RequiredArgsConstructor;
 		@GetMapping("/editarVenta/{id}")
 		public String editarVenta(@PathVariable("id") long id, Model model) {                            
 			
-			Venta venta = ventaServicio.findById2(id);
+			Optional<Venta> venta = ventaServicio.findById(id);
 			
-			if (venta != null) {
-				model.addAttribute("venta", venta);
-				model.addAttribute("listaLineas", venta.getLineas());
+			if (venta.isPresent()) {
+				model.addAttribute("venta", venta.get());
+				model.addAttribute("listaLineas", venta.get().getLineas());
 				return "lineas";
 			} else {
 				return "redirect:/listaVenta";
@@ -79,21 +79,15 @@ import lombok.RequiredArgsConstructor;
 		@GetMapping("/borrarVenta/{id}")
 		public String borrarVenta(@PathVariable("id") Long id, Model model) {
 			
-			Venta venta = ventaServicio.findById2(id);
+			Optional<Venta> venta = ventaServicio.findById(id);
 			
-			if (venta!= null) {
-				
-				if (ventaServicio != null) {
-					ventaServicio.delete(venta);				
+			if (venta.isPresent()) {
+					ventaServicio.deleteById(id);
+					return "redirect:/listaVentas";
 				} else {
 					
-				//Se ha agregado el parámetro error con valor true a la ruta	
 					return "redirect:/listaVentas";
 				}
-				
-			} 
-
-			return "redirect:/listaVentas";
 			
 			
 		}

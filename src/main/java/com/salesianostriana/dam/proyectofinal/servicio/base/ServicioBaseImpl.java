@@ -2,12 +2,8 @@ package com.salesianostriana.dam.proyectofinal.servicio.base;
 
 import java.util.List;
 import java.util.Optional;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.salesianostriana.dam.proyectofinal.model.LineaVenta;
-import com.salesianostriana.dam.proyectofinal.model.Venta;
 
 public abstract class ServicioBaseImpl<T, ID, R extends JpaRepository<T, ID>> implements ServicioBase<T, ID> {
 
@@ -52,14 +48,6 @@ public abstract class ServicioBaseImpl<T, ID, R extends JpaRepository<T, ID>> im
 	@Override
 	public void deleteById(ID id) {
 		repositorio.deleteById(id);
-	}
-	
-	public Venta findById2(Long id) {
-		return (Venta) repositorio.findById((ID) id).orElse(null);
-	}
-	
-	public LineaVenta findById3(Long id) {
-		return (LineaVenta) repositorio.findById((ID) id).orElse(null);
 	}
 	
 	
