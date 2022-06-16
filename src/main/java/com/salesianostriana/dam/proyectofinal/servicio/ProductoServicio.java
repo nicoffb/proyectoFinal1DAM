@@ -24,6 +24,9 @@ public class ProductoServicio extends
 		return listaIds;
 	}
 	
+	public List<Producto> findByNombre(String nombre){
+		return repositorio.findByNombreContainingIgnoreCase(nombre);
+	}
 
 
 

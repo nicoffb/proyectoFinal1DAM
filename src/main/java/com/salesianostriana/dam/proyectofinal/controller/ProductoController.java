@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.salesianostriana.dam.proyectofinal.model.BuscarBean;
 import com.salesianostriana.dam.proyectofinal.model.Producto;
 import com.salesianostriana.dam.proyectofinal.servicio.ProductoServicio;
 import com.salesianostriana.dam.proyectofinal.servicio.VentaServicio;
@@ -58,11 +60,11 @@ public class ProductoController {
 	
 	
 	
-	//METODO PARA INVOCAR LA LISTA DE PRODUCTOS a partir de la base de datos
+	//METODO PARA INDEX
 	@GetMapping("/")
 	public String index(Model model) {
 		model.addAttribute("listaProductos", productoServicio.findAll());
-	
+		model.addAttribute("buscarForm", new BuscarBean());
 		
 		return "index";
 	}
@@ -152,6 +154,13 @@ public class ProductoController {
 		
 		
 		
+	@PostMapping("/buscar")
+	  public String buscarProducto(@ModelAttribute("buscarForm") BuscarBean buscarBean,
+			 Model model){
+	  	model.addAttribute("productos", productoServicio.findByNombre(buscarBean.getBuscar()));
+	  
+	  return "index";
+	  }
 		
 		
 		

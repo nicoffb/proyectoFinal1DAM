@@ -121,6 +121,18 @@
       </div>
     </section>
 
+    <---BUSCAAAAR---->
+	<div class="trend-w3layouts">
+	<div class="container" style="margin-bottom: 3%;">
+	<h2>Gestión de Productos</h2>
+	<div class="principal">
+		
+		 <form action="#" th:action="@{buscar}" th:object="${buscarForm}" method="POST">
+		<input type="text" name="buscarnombre" placeholder="Buscar Por Nombre" th:field="*{buscar}" style="margin-left: 5%; padding: 4px;" />
+		<button class="btn- btn-danger" type="submit"  style="padding: 4px;">
+			<span class="glyphicon glyphicon-search"></span>
+		</button>
+		</form>
 
 
     <div class="album py-5 bg-light">
@@ -145,6 +157,17 @@
                     <button type="button" class="btn btn-success btn-outline-secondary">Editar</button>
                     <button type="button" class="btn btn-danger btn-outline-secondary">Borrar</button>
                   </div>
+                  <div class="col-md-6 col-sm-6">	
+						
+						<!-- En el botón comprar de cada producto, cogemos el id de dicho producto
+						como ya hemos hecho en ejemplos anteriores, mediante el id -->	
+											
+							<a href="/productoACarrito/" th:href="@{/productoACarrito/{id}(id=${producto.id})}">
+								<button type="button" class="btn btn-primary">
+  									<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>&nbsp; Comprar
+								</button>
+							</a>
+						</div>
                   <small class="text-muted" th:text="${'$'+producto.pvp}"> $ </small>
                 </div>
               </div>
