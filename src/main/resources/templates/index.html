@@ -52,7 +52,7 @@
         </a>
         <a class="nav-link text-primary big" href="javascript:void(0)" data-bs-toggle="offcanvas"
           data-bs-target="#canvas">
-          <h1>GESTIÓN</h1>
+          <h1>ADMINISTRACIÓN</h1>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader"
           aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">LOG IN
@@ -84,26 +84,26 @@
   <!--Offcanvas-->
   <div class="offcanvas offcanvas-start" id="canvas">
     <div class="offcanvas-header  bg-dark">
-      <h1 class="offcanvas-title text-primary">ADMINISTRACIÓN</h1>
+      <h1 class="offcanvas-title text-primary">GESTIONAR</h1>
       <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
     </div>
 
     <a href="./products.html" th:href="@{/lista}">
       <div class=" row d-flex justify-content-center offcanvas-body bg-primary">
-        <div class="card col-xs-12 col-lg-6 px-0 mx-0">
-          <img class="card-img-top" src="../static/imagenes/skyrim.jpg" alt="Hamburguesa chedamburger">
+        <div class="card col-xl-12 col-lg-6 px-0 mx-0">
+          <img class="card-img-top" src="../static/imagenes/videojuegos.jpg" th:src="@{/imagenes/videojuegos.jpg}" alt="Hamburguesa chedamburger" width="200%">
           <div class="card-img-overlay">
-            <h4 class="card-title text-white text-center mt-5 display-2">Gestionar videojuegos</h4>
+            <h4 class="card-title text-black text-center mt-5 display-1">Gestionar videojuegos</h4>
           </div>
         </div>
       </div>
     </a>
     <a href="./products.html" th:href="@{/listaVentas}">
       <div class=" row d-flex justify-content-center offcanvas-body bg-primary">
-        <div class="card col-xs-12 col-lg-9 px-0 mx-0">
-          <img class="card-img-top" src="../static/imagenes/ventas.jpg" alt="Hamburguesa chedamburger">
+        <div class="card col-xl-12 col-lg-9 px-0 mx-0">
+          <img class="card-img-top" src="../static/imagenes/ventas.jpg" th:src="@{/imagenes/ventas.jpg}"  alt="Hamburguesa chedamburger">
           <div class="card-img-overlay">
-            <h4 class="card-title text-white text-center mt-5 display-2">Gestionar ventas</h4>
+            <h4 class="card-title text-black text-center mt-5 display-2">Gestionar ventas</h4>
           </div>
         </div>
       </div>
@@ -190,11 +190,11 @@
 
                       <div class="d-flex justify-content-between align-items-center">
                         <div class="btn-group">
-          
+
                           <a th:href="@{/detalle/{id}(id=${producto.id})}">
                             <button type="button" class="btn btn-warning btn-outline-secondary">
                               <span class="glyphicon glyphicon-eye-open"></span> Detalles
-                            </button> 
+                            </button>
                           </a>
 
 
@@ -232,94 +232,82 @@
     <div class="container my-">
 
       <footer class="text-center text-lg-start border border-white mt-xl-5 pt-4 bg-dark">
-        <!-- Grid container -->
+
         <div class="container p-4">
-          <!--Grid row-->
+
           <div class="row">
-            <!--Grid column-->
-            <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-              <h5 class="text-uppercase mb-4">OUR WORLD</h5>
+
+            <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+              <h5 class="text-uppercase mb-4">SOBRE TREASURE GAMES</h5>
 
               <ul class="list-unstyled mb-4">
                 <li>
-                  <a href="#!" class="text-white">About us</a>
+                  <a href="#!" class="text-white">Sobre nosotros</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-white">Collections</a>
+                  <a href="#!" class="text-white">Colaboraciones</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-white">Environmental philosophy</a>
-                </li>
-                <li>
-                  <a href="#!" class="text-white">Artist collaborations</a>
+                  <a href="#!" class="text-white">Nuestros planes de futuro</a>
                 </li>
               </ul>
             </div>
-            <!--Grid column-->
 
-            <!--Grid column-->
             <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-              <h5 class="text-uppercase mb-4">Assistance</h5>
+              <h5 class="text-uppercase mb-4">Redes sociales</h5>
 
               <ul class="list-unstyled">
                 <li>
-                  <a href="#!" class="text-white">Contact us</a>
+                  <a href="https://es-es.facebook.com/" class="text-white">Facebook</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-white">Size Guide</a>
+                  <a href="https://www.instagram.com/?hl=es" class="text-white">Instagram</a>
                 </li>
                 <li>
-                  <a href="#!" class="text-white">Shipping Information</a>
-                </li>
-                <li>
-                  <a href="#!" class="text-white">Returns & Exchanges</a>
-                </li>
-                <li>
-                  <a href="#!" class="text-white">Payment</a>
+                  <a href="https://twitter.com/?lang=es" class="text-white">Twitter</a>
                 </li>
               </ul>
             </div>
-            <!--Grid column-->
 
-            <!--Grid column-->
-            <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-              <h5 class="text-uppercase mb-4">Careers</h5>
 
-              <ul class="list-unstyled">
-                <li>
-                  <a href="#!" class="text-white">Jobs</a>
-                </li>
-              </ul>
-            </div>
-            <!--Grid column-->
+            <div class="col-lg-4">
+              <div class="text-center align-items-center d-flex justify-content-center">
+                <a href="https://es-es.facebook.com/" title="Facebook" target="blank"></a>
 
-            <!--Grid column-->
-            <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-              <h5 class="text-uppercase mb-4">Sign up to our newsletter</h5>
+                <a href="https://www.instagram.com/?hl=es" title="Instagram" target="blank"></a>
 
-              <div class="form-outline form-white mb-4">
-                <input type="email" id="form5Example2" class="form-control" />
-                <label class="form-label" for="form5Example2">Email address</label>
+                <a href="https://twitter.com/?lang=es" title="Twitter" target="blank"></a>
               </div>
 
-              <button type="submit" class="btn btn-outline-white btn-block">Subscribe</button>
-            </div>
-            <!--Grid column-->
-          </div>
-          <!--Grid row-->
-        </div>
-        <!-- Grid container -->
 
-        <!-- Copyright -->
+
+              <div class="col-lg-9 col-md-6  mb-lg-0">
+                <h5 class="text-uppercase mb-4">Suscríbete a nuestras noticias</h5>
+
+                <div class="form-outline form-white mb-4">
+                  <input type="email" id="form5Example2" class="form-control" />
+                  <label class="form-label" for="form5Example2">Correo electrónico</label>
+                </div>
+
+                <button type="submit" class="btn btn-outline-white btn-block">Subscribe</button>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+
+
         <div class="text-center p-3 border-top border-white">
           © 2020 Copyright:
-          <a class="text-white" href="https://mdbootstrap.com/">Treasure Gaming</a>
+          <a class="text-white" href="./index.html" th:href="@{/lista}">Treasure Gaming</a>
         </div>
-        <!-- Copyright -->
+
       </footer>
 
     </div>
-    <!-- End of .container -->
+
   </footer>
 
 

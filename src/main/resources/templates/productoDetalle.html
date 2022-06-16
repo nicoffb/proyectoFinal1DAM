@@ -79,20 +79,21 @@
 
   <!-- AGREGAR TODA LA ESTRUCTURA Y ETIQUETAS SEMANTICAS CUERPO-->
   <main>
-    <div class="container mt-5 mb-5" th:object="${producto}" >
+    <div class="container mt-5 mb-5" th:object="${producto}">
       <div class="row d-flex justify-content-center">
         <div class="col-md-10">
           <div class="card">
             <div class="row">
               <div class="col-md-6">
                 <div class="images p-3">
-                  <div class="text-center p-4"> <img id="imagen principal" src="../static/imagenes/godofwar.jpg"  th:src="${not (#strings.isEmpty(producto.imagen))} ? ${producto.imagen} : 'http://placehold.it/48x48'"  alt=""
-                      width="60%">
-                    
+                  <div class="text-center p-4"> <img id="imagen principal" src="../static/imagenes/godofwar.jpg"
+                      th:src="${not (#strings.isEmpty(producto.imagen))} ? ${producto.imagen} : 'http://placehold.it/48x48'"
+                      alt="" width="60%">
+
                   </div>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="d-flex align-items-center">
-                      <a href="./index.html" th:href="@{/index}" class="">Atrás</a>
+                      <a href="./index.html" th:href="@{/}" class="">Volver a la página principal</a>
                     </div>
                   </div>
                 </div>
@@ -103,18 +104,25 @@
 
                   <div class="mt-4 mb-3"> <span class="text-uppercase text-muted brand">PC</span>
                     <h5 class="text-uppercase" th:text="${producto.nombre}"></h5>
-                    <div class="price d-flex flex-row align-items-center" th:text="${producto.pvp}">precio <span></span>
+                    <div class="price d-flex flex-row align-items-center">
+                    <span th:text="${producto.pvp}" > </span>
+                    <small>$ Precio original</small>
                     </div>
-                    <div class="ml-2"> <small class="dis-price">$59 Precio original</small> <span
-                        th:text="${producto.descuento}">% Descuento</span>
+                    <div class="ml-2"> 
+                      <span th:text="${producto.descuento}" > </span>
+                       <small>de descuento ahora!!</small>
+                     
                     </div>
+                    
                   </div>
                   <p class="about" th:text="${producto.descripcion}"></p>
-
+					
+				<a href="/productoACarrito/" th:href="@{/productoACarrito/{id}(id=${producto.id})}">
                   <div class="cart mt-4 align-items-center"> <button
                       class="btn btn-danger text-uppercase mr-2 px-4">Añadir al carrito</button> <i
                       class="fa fa-heart text-muted"></i> <i class="fa fa-share-alt text-muted"></i>
                   </div>
+				</a>
                 </div>
               </div>
             </div>
