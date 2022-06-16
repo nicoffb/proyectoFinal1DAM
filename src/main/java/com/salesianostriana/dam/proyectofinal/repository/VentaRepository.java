@@ -2,6 +2,7 @@ package com.salesianostriana.dam.proyectofinal.repository;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.salesianostriana.dam.proyectofinal.model.Producto;
@@ -11,6 +12,12 @@ import com.salesianostriana.dam.proyectofinal.model.Venta;
 public interface VentaRepository extends JpaRepository<Venta, Long>{
 	
 	public List<Producto> findByCompradorContainingIgnoreCase(String comprador);
+	
+	//hay que ponerle alias por huevos
+	@Query("SELECT COALESCE( SUM(v.precioTotal) , 0)FROM Venta v WHERE MONTH(v.fechaCompra) = MONTH(current_date) AND YEAR(v.fechaCompra) = YEAR(current_date)")
+	
+	
+	public double totalRecaudadoMes();
 	
 	
 } 

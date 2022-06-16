@@ -1,11 +1,6 @@
 document.getElementById("nombre").addEventListener("blur",comprobarNombre);
 document.getElementById("descripcion").addEventListener("blur",comprobarDescripcion);
-document.getElementById("imgProducto").addEventListener("blur",comprobarImg);
-document.getElementById("PrecioSesion").addEventListener("blur",comprobarPrecio);
-document.getElementById("EdadMinima").addEventListener("blur",comprobarEdad);
-document.getElementById("cc").addEventListener("blur",comprobarSpecs);
-document.getElementById("cv").addEventListener("blur",comprobarSpecs);
-document.getElementById("kmh").addEventListener("blur",comprobarSpecs);
+let formProductos = document.forms[0];
 
 document.querySelectorAll(".errorForm").forEach(p => p.hidden = true);
 
@@ -26,7 +21,7 @@ let nombre = formProductos.nombre;
 let correcto = nombre.value!="";
 
 if(correcto){
-  nombre.nextElementSibling = true;
+  nombre.nextElementSibling.hidden = true;
 }else{
   nombre.nextElementSibling.hidden = false;
 }
@@ -43,6 +38,14 @@ if(correcto){
 }else{
   desc.nextElementSibling.hidden = false;
 }
+
+
+
+
+
+
+
+
 
 return correcto;
 }

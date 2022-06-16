@@ -158,8 +158,8 @@ public class ProductoController {
 	@PostMapping("/buscar")
 	  public String buscarProducto(@ModelAttribute("buscarForm") BuscarBean buscarBean,
 			 Model model){
-	  	model.addAttribute("productos", productoServicio.findByNombre(buscarBean.getBuscar()));
-	  
+	  	model.addAttribute("listaProductos", productoServicio.findByNombre(buscarBean.getBuscar()));
+		model.addAttribute("buscarForm", new BuscarBean());
 	  return "index";
 	  }
 		

@@ -35,6 +35,8 @@ import lombok.RequiredArgsConstructor;
 		public String listaVentas(Model model) {
 			
 			model.addAttribute("listaVentas", ventaServicio.findAll());
+			model.addAttribute("recaudado", ventaServicio.calcularRecaudadoMes());
+			
 			return "ventas";
 		}
 		

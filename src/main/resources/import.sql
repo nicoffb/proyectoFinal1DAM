@@ -13,8 +13,8 @@ insert into producto (nombre, descripcion, imagen, pvp, descuento, id)values ('T
 
 --VENTAS--
 insert into venta (precio_total, fecha_compra ,comprador,id) values (50.97, '2022-05-19','Luismi',22);
-insert into venta (precio_total, fecha_compra ,comprador,id) values (89.98, '2022-05-19','Nico',58);
-insert into venta (precio_total, fecha_compra ,comprador,id) values (50.97, '2022-05-19','Ángel',77);
+insert into venta (precio_total, fecha_compra ,comprador,id) values (89.98, '2022-06-10','Nico',58);
+insert into venta (precio_total, fecha_compra ,comprador,id) values (50.97, '2022-06-01','Ángel',77);
 
 --LINEAVENTAS--
 insert into linea_venta(videojuego_id,cantidad,precio_unitario,venta_id,id)values (3,1,59.99,22,1);

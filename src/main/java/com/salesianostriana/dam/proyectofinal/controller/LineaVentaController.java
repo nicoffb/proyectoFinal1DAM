@@ -30,6 +30,9 @@ import lombok.RequiredArgsConstructor;
 		
 		@Autowired
 		private VentaServicio ventaServicio;
+		
+		@Autowired
+		private ProductoServicio productoServicio;
 	
 	
 		
@@ -49,6 +52,7 @@ import lombok.RequiredArgsConstructor;
 			LineaVenta nuevaLinea = new LineaVenta();
 			nuevaLinea.setVenta(ventaServicio.findById(id).get());
 			model.addAttribute("linea", nuevaLinea);
+			model.addAttribute("videojuegos", productoServicio.findAll());
 			return "formularioLinea";
 		}
 		
@@ -58,6 +62,8 @@ import lombok.RequiredArgsConstructor;
 		public String submitNuevaLinea(@ModelAttribute("linea") LineaVenta linea, Model model) {
 			linea.setPrecioUnitario(lineaventaServicio.CalcularSubtotal(linea));
 			lineaventaServicio.save(linea);
+			linea.getVenta().setPrecioTotal(ventaServicio.CalcularTotalVenta(linea.getVenta()));
+			ventaServicio.save(linea.getVenta());
 			
 			//En el redirect hay que poner la ruta completa del controller al que queremos ir, 
 			//incluyendo lo escrito dentro del @RequestMapping del comienzo de la clase
@@ -74,6 +80,7 @@ import lombok.RequiredArgsConstructor;
 			if(resultado.isPresent())	{
 				LineaVenta linea = resultado.get();
 				model.addAttribute("linea", linea);
+				model.addAttribute("videojuegos", productoServicio.findAll());
 				return "formularioLinea";
 			}else {
 				return "redirect:/editarVenta/";

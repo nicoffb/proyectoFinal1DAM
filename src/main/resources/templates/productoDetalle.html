@@ -117,7 +117,7 @@
                   </div>
                   <p class="about" th:text="${producto.descripcion}"></p>
 					
-				<a href="/productoACarrito/" th:href="@{/productoACarrito/{id}(id=${producto.id})}">
+				<a href="/productoACarrito/" th:href="@{/productoACarrito/{id}(id=${producto.id})}" sec:authorize="isAuthenticated()">
                   <div class="cart mt-4 align-items-center"> <button
                       class="btn btn-danger text-uppercase mr-2 px-4">Añadir al carrito</button> <i
                       class="fa fa-heart text-muted"></i> <i class="fa fa-share-alt text-muted"></i>

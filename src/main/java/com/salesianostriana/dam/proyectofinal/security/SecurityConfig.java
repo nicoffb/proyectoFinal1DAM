@@ -27,14 +27,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/private/**").hasAnyRole("USER", "ADMIN")
-                .antMatchers("/admin/**").hasRole("ADMIN")
-                .antMatchers("/indexAdmin/**").hasRole("ADMIN")
-                .antMatchers("/indexUsuario/**").hasRole("USER")
+                .antMatchers("/carrito/**").hasAnyRole("USER", "ADMIN")
+                .antMatchers("/lista/**").hasRole("ADMIN")
                 .anyRequest().permitAll()
                 .and().exceptionHandling().accessDeniedPage("/auth-error")
-                .and().formLogin()
-                .and().logout().logoutSuccessUrl("/");
+                .and().formLogin().loginPage("/").loginProcessingUrl("/login").failureUrl("/login-error").permitAll()
+                .and().logout().logoutUrl("/logout").logoutSuccessUrl("/").permitAll();
         
         http.csrf().disable();
 

@@ -31,11 +31,30 @@ public class LineaVentaServicio
 	}
 	
 	
+	/**
+	 * 
+	 * @param l
+	 * @return
+	 */
 	public double CalcularSubtotal (LineaVenta l) {
 		double precioConDescuento= 0;
+		double numProdPromo = 0;
+		boolean promo = false;
+		//numero de productos que van a ser gratis
+		if(l.getCantidad()/4 >= 1) {
+			numProdPromo =  l.getCantidad()/4;
+			numProdPromo = Math.floor(numProdPromo);
+			promo = true;
+		}
+		
 		precioConDescuento += (l.getVideojuego().getPvp())*(1-l.getVideojuego().getDescuento()/100)*l.getCantidad();
+		
+		//le quitamos el precio de tantos productos que le correspondan
+		if(promo) {
+			precioConDescuento -= numProdPromo*((l.getVideojuego().getPvp())*(1-l.getVideojuego().getDescuento()/100));
+		}
+		
 		l.setPrecioUnitario(precioConDescuento);
-		repositorio.save(l);
 		return precioConDescuento;
 	}
 	

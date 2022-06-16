@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
   <meta charset="utf-8">
@@ -50,7 +50,7 @@
           <h1><strong>TREASURE GAMING</strong></h1>
 
         </a>
-        <a class="nav-link text-primary big" href="javascript:void(0)" data-bs-toggle="offcanvas"
+        <a sec:authorize="hasRole('ROLE_ADMIN')" class="nav-link text-primary big" href="javascript:void(0)" data-bs-toggle="offcanvas"
           data-bs-target="#canvas">
           <h1>ADMINISTRACIÓN</h1>
         </a>
@@ -66,11 +66,11 @@
       <div class="container">
         <div class="row">
 
-          <a href="./loginFuturo.html" class="col-sm-6 bg-primary">
+          <a href="./loginFuturo.html" th:href="@{/login}"  class="col-sm-6 bg-primary">
             <p>LOG IN</p>
           </a>
 
-          <a href="./loginFuturo.html" class="col-sm-6 bg-warning">
+          <a href="./loginFuturo.html" th:href="@{/logout}" class="col-sm-6 bg-warning">
             <p>LOG OUT</p>
           </a>
 
@@ -198,7 +198,7 @@
                           </a>
 
 
-                          <a href="/productoACarrito/" th:href="@{/productoACarrito/{id}(id=${producto.id})}">
+                          <a href="/productoACarrito/" th:href="@{/productoACarrito/{id}(id=${producto.id})}" sec:authorize="isAuthenticated()">
                             <button type="button" class="btn btn-primary">
                               <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>&nbsp; Comprar
                             </button>

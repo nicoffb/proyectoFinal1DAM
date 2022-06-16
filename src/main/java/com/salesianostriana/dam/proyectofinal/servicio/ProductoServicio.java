@@ -21,7 +21,7 @@ public class ProductoServicio extends
 
 	
 	public List<Producto> findByNombre(String nombre){
-		return repositorio.findByNombreContainingIgnoreCase(nombre);
+		return repositorio.findByNombreContainsIgnoreCase(nombre);
 	}
 	
 //	public List<Long> recogerIdentificador(Optional<Producto> producto) {

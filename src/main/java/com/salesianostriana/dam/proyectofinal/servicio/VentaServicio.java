@@ -47,7 +47,7 @@ public class VentaServicio extends ServicioBaseImpl<Venta, Long, VentaRepository
 	*/
 	
 	
-	
+	//para checkout
 	public double CalcularTotalVenta (Venta v) {
 		double sumaTotal = 0;
 		
@@ -55,10 +55,19 @@ public class VentaServicio extends ServicioBaseImpl<Venta, Long, VentaRepository
 			sumaTotal += lineaVentaServicio.CalcularSubtotal(lv);
 		}
 			v.setPrecioTotal(sumaTotal);
-			repositorio.save(v);
 			return sumaTotal;
 		}
 		
-	}
+	
+
+
+   public double calcularRecaudadoMes() {
+	      return repositorio.totalRecaudadoMes();
+   }
+
+}
+
+
+
 
 

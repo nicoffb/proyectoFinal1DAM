@@ -79,14 +79,15 @@
 
             <div class="row tm-edit-product-row">
               <div class="col-xl-6 col-lg-6 col-md-12">
-                <input type="hidden" th:field="*{id}" id="id" >
+                <input type="hidden" th:field="*{id}" id="id">
                 <input type="hidden" th:field="*{venta}" id="venta"> 
 
 
                 <div class="form-group mb-3">
                   <label for="videojuego">Videojuego</label>
-                  <input id="videojuego" name="videojuego" type="text" class="form-control validate" required
-                    th:field="*{videojuego}"></div>
+                  <select id="videojuego" name="videojuego" class="form-control validate" requiredth:field="*{videojuego}">
+                    <option th:each="juego : ${videojuegos}" th:text="${juego.nombre}" th:value="${juego.id}"></option>
+                  </select>
 
 
                 <div class="row">
