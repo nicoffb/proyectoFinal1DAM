@@ -128,7 +128,7 @@
 	<div class="principal">
 		
 		 <form action="#" th:action="@{buscar}" th:object="${buscarForm}" method="POST">
-		<input type="text" name="buscarnombre" placeholder="Buscar Por Nombre" th:field="*{buscar}" style="margin-left: 5%; padding: 4px;" />
+		<input type="text" name="nombre" placeholder="Buscar" th:field="*{buscar}" style="margin-left: 5%; padding: 4px;" />
 		<button class="btn- btn-danger" type="submit"  style="padding: 4px;">
 			<span class="glyphicon glyphicon-search"></span>
 		</button>
@@ -153,14 +153,8 @@
                     <p th:text="${producto.id}"></p>
                     <a th:href="@{/detalle/{id}(id=${producto.id})}"><button type="button"
                         class="btn btn-warning btn-outline-secondary">Ver</button> </a>
-                    <!-- puede coger el id de cada producto aunque no lo tenga puesto? 2022-06-12 21:24:27.702  WARN 26320 --- [nio-9000-exec-9] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "{id}"]-->
-                    <button type="button" class="btn btn-success btn-outline-secondary">Editar</button>
-                    <button type="button" class="btn btn-danger btn-outline-secondary">Borrar</button>
                   </div>
                   <div class="col-md-6 col-sm-6">	
-						
-						<!-- En el botón comprar de cada producto, cogemos el id de dicho producto
-						como ya hemos hecho en ejemplos anteriores, mediante el id -->	
 											
 							<a href="/productoACarrito/" th:href="@{/productoACarrito/{id}(id=${producto.id})}">
 								<button type="button" class="btn btn-primary">

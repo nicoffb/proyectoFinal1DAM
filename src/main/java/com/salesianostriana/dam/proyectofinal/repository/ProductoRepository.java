@@ -13,11 +13,12 @@ public interface ProductoRepository
 	extends JpaRepository<Producto, Long> {
 
 
-public  List<Producto> findByNombreContainingIgnoreCase(String nombre);
+	public  List<Producto> findByNombreContainingIgnoreCase(String nombre);
 
+	/**
 @Query("select p.id from Producto p")  //quiero q coja los 3 primeros ids
 public List<Long> obtenerIds();
-
+*/
 
 }
 

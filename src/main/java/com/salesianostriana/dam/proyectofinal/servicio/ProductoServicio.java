@@ -18,15 +18,17 @@ public class ProductoServicio extends
 		// TODO Auto-generated constructor stub
 	}
 	
-	public List<Long> recogerIdentificador(Optional<Producto> producto) {
-		List<Long> listaIds = repositorio.obtenerIds();
-		//listaIds<0>listaIds=  crear una lista con los tres primer ids de la lista 
-		return listaIds;
-	}
+
 	
 	public List<Producto> findByNombre(String nombre){
 		return repositorio.findByNombreContainingIgnoreCase(nombre);
 	}
+	
+//	public List<Long> recogerIdentificador(Optional<Producto> producto) {
+//		List<Long> listaIds = repositorio.obtenerIds();
+//		//listaIds<0>listaIds=  crear una lista con los tres primer ids de la lista 
+//		return listaIds;
+//	}
 
 
 
