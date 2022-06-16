@@ -39,15 +39,15 @@ public class CarritoController {
     }
 
     @GetMapping ("/productoACarrito/{id}")
-    public String productoACarrito (@PathVariable("id") Long id, Model model) {
+    public String productoACarrito (@PathVariable("id") long id, Model model) {
     	
     	carritoServicio.addProducto(productoServicio.findById(id).get());
     	    		 	
     	return "redirect:/carrito";
     }
     
-    @GetMapping("/borrarProducto/{id}")
-    public String removeProductFromCart(@PathVariable("id") Long id) {
+    @GetMapping("/borrarDeCarrito/{id}")
+    public String removeProductFromCart(@PathVariable("id") long id) {
         
     	carritoServicio.removeProducto(productoServicio.findById(id).get());
         return "redirect:/carrito";
