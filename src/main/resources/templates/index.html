@@ -40,44 +40,79 @@
 </head>
 
 <body>
-
+  <!--Header-->
   <header>
-    <div class="collapse bg-dark" id="navbarHeader">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-8 col-md-7 py-4">
-            <h4 class="text-white">About</h4>
-            <p class="text-muted">Add some information about the album below, the author, or any other background
-              context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off
-              to some social networking sites or contact information.</p>
-          </div>
-          <div class="col-sm-4 offset-md-1 py-4">
-            <h4 class="text-white">Contact</h4>
-            <ul class="list-unstyled">
-              <li><a href="#" class="text-white">Follow on Twitter</a></li>
-              <li><a href="#" class="text-white">Like on Facebook</a></li>
-              <li><a href="#" class="text-white">Email me</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
+
     <div class="navbar navbar-dark bg-dark shadow-sm">
       <div class="container">
         <a href="./products.html" th:href="@{/lista}" class="navbar-brand d-flex align-items-center">
           <img src="../static/imagenes/treasurepink.png" th:src="@{imagenes/treasurepink.png}" alt="" width="8%">
-          <strong>TREASURE GAMING</strong>
+          <h1><strong>TREASURE GAMING</strong></h1>
+
+        </a>
+        <a class="nav-link text-primary big" href="javascript:void(0)" data-bs-toggle="offcanvas"
+          data-bs-target="#canvas">
+          <h1>GESTIÓN</h1>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader"
-          aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+          aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">LOG IN
           <span class="navbar-toggler-icon"></span>
         </button>
       </div>
     </div>
+
+    <!--  offcanvas ACTIVO -->
+    <div class="collapse bg-dark" id="navbarHeader">
+      <div class="container">
+        <div class="row">
+
+          <a href="./loginFuturo.html" class="col-sm-6 bg-primary">
+            <p>LOG IN</p>
+          </a>
+
+          <a href="./loginFuturo.html" class="col-sm-6 bg-warning">
+            <p>LOG OUT</p>
+          </a>
+
+        </div>
+      </div>
+    </div>
+    </div>
+
   </header>
 
-  <main>
+  <!--Offcanvas-->
+  <div class="offcanvas offcanvas-start" id="canvas">
+    <div class="offcanvas-header  bg-dark">
+      <h1 class="offcanvas-title text-primary">ADMINISTRACIÓN</h1>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
+    </div>
 
+    <a href="./products.html" th:href="@{/lista}">
+      <div class=" row d-flex justify-content-center offcanvas-body bg-primary">
+        <div class="card col-xs-12 col-lg-6 px-0 mx-0">
+          <img class="card-img-top" src="../static/imagenes/skyrim.jpg" alt="Hamburguesa chedamburger">
+          <div class="card-img-overlay">
+            <h4 class="card-title text-white text-center mt-5 display-2">Gestionar videojuegos</h4>
+          </div>
+        </div>
+      </div>
+    </a>
+    <a href="./products.html" th:href="@{/listaVentas}">
+      <div class=" row d-flex justify-content-center offcanvas-body bg-primary">
+        <div class="card col-xs-12 col-lg-9 px-0 mx-0">
+          <img class="card-img-top" src="../static/imagenes/ventas.jpg" alt="Hamburguesa chedamburger">
+          <div class="card-img-overlay">
+            <h4 class="card-title text-white text-center mt-5 display-2">Gestionar ventas</h4>
+          </div>
+        </div>
+      </div>
+    </a>
+
+  </div>
+
+
+  <main>
     <section class="py-5 text-center container">
       <div class="container">
         <h2>A la última</h2>
@@ -121,63 +156,77 @@
       </div>
     </section>
 
-    <---BUSCAAAAR---->
-	<div class="trend-w3layouts">
-	<div class="container" style="margin-bottom: 3%;">
-	<h2>Gestión de Productos</h2>
-	<div class="principal">
-		
-		 <form action="#" th:action="@{buscar}" th:object="${buscarForm}" method="POST">
-		<input type="text" name="nombre" placeholder="Buscar" th:field="*{buscar}" style="margin-left: 5%; padding: 4px;" />
-		<button class="btn- btn-danger" type="submit"  style="padding: 4px;">
-			<span class="glyphicon glyphicon-search"></span>
-		</button>
-		</form>
 
 
-    <div class="album py-5 bg-light">
-      <div class="container">
-        <!--  -->
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+    <!-- !---BUSCAAAAR---->
+    <div class="trend-w3layouts">
+      <div class="container" style="margin-bottom: 3%;">
+        <h2>Búsqueda</h2>
+        <div class="principal">
+
+          <form action="#" th:action="@{buscar}" th:object="${buscarForm}" method="POST">
+            <input type="text" name="nombre" placeholder="Buscar" th:field="*{buscar}"
+              style="margin-left: 5%; padding: 4px;" />
+            <button class="btn- btn-danger" type="submit" style="padding: 4px;">
+              <span class="glyphicon glyphicon-search"></span>
+            </button>
+          </form>
 
 
-          <!-- CARTA DE EJEMPLO ------------------------------------------------------------------------------------  -->
-          <div class="col" th:each="producto : ${listaProductos}">
-            <img th:src="${#strings.isEmpty(producto.imagen)} ? 'http://placehold.it/350x260' : ${producto.imagen}"
-              alt="miniatura" width="100%" height="450">
-            <div class="card shadow-sm">
-              <div class="card-body">
-                <p class="card-text" th:text="${producto.descripcion}">
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-                    <p th:text="${producto.id}"></p>
-                    <a th:href="@{/detalle/{id}(id=${producto.id})}"><button type="button"
-                        class="btn btn-warning btn-outline-secondary">Ver</button> </a>
+          <div class="album py-5 bg-light">
+            <div class="container">
+              <!--  -->
+              <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+
+                <!-- CARTA DE EJEMPLO ------------------------------------------------------------------------------------  -->
+                <div class="col" th:each="producto : ${listaProductos}">
+                  <img
+                    th:src="${#strings.isEmpty(producto.imagen)} ? 'http://placehold.it/350x260' : ${producto.imagen}"
+                    alt="miniatura" width="100%" height="450">
+                  <div class="card shadow-sm">
+                    <div class="card-body">
+
+                      <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+          
+                          <a th:href="@{/detalle/{id}(id=${producto.id})}">
+                            <button type="button" class="btn btn-warning btn-outline-secondary">
+                              <span class="glyphicon glyphicon-eye-open"></span> Detalles
+                            </button> 
+                          </a>
+
+
+                          <a href="/productoACarrito/" th:href="@{/productoACarrito/{id}(id=${producto.id})}">
+                            <button type="button" class="btn btn-primary">
+                              <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>&nbsp; Comprar
+                            </button>
+                          </a>
+                        </div>
+
+                        <small class="text-muted" th:text="${'$'+producto.pvp}"> $ </small>
+                      </div>
+                    </div>
                   </div>
-                  <div class="col-md-6 col-sm-6">	
-											
-							<a href="/productoACarrito/" th:href="@{/productoACarrito/{id}(id=${producto.id})}">
-								<button type="button" class="btn btn-primary">
-  									<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>&nbsp; Comprar
-								</button>
-							</a>
-						</div>
-                  <small class="text-muted" th:text="${'$'+producto.pvp}"> $ </small>
                 </div>
-              </div>
-            </div>
-          </div>
-          <!-- AQUI TERMINA EL EJEMPLO th:href="@{/detalle/{id}(id=${producto.id})}
+                <!-- AQUI TERMINA EL EJEMPLO th:href="@{/detalle/{id}(id=${producto.id})}
           Saber usar la consola, insertar, modificar datos
           numbers en 02expresiones , coger tipos de datos
           en el ver de cada producto poner este thref para buscar por id  -->
 
 
-        </div>
-      </div>
-    </div>
+              </div>
+            </div>
+          </div>
+
+
+
 
   </main>
+
+
+
 
   <footer>
     <div class="container my-">
