@@ -1,21 +1,10 @@
 # proyectoFinal
-vincular la pagina de detalle y fragmentar el footer
+No se puede borrar los productos ni las ventas metidas con el importsql (las 3 primeras)
 
-crear consultas con querys
-
-podria poner desde el index por programacion y desde la lista por DOM
+Usuario: nico  Contraseña: 1234
 
 
-hacer desplegable de la derecha
+Poner todas las limitaciones a los controllers de admin y hacer un admin que piden
 
+Se pueden modificar parametros de ventas y las propias lineas de venta de forma retroactiva de las ventas ya realizadas, no se pueden añadir nuevas desde 0, aunque haya carrito, no hay checkout
 
-hacer que el  update funcione
-
-
-el sistema de seguridad que muestre solo el ver detalle al usuario
-
-
-implementar las fotos
-
-
-AVISAR CUANDO NO SE PUEDA BORRAR, POR EJEMPLO SI YA ESTÁ LA VENTA HECHA , o no poder modificar los 4 primeros CON LO DE GET IDS

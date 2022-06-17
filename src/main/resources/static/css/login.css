@@ -11559,6 +11559,11 @@ fieldset:disabled .btn {
     .d-print-none {
         display: none !important
     }
+
+    .bg{
+        background-image: url(../imagenes/treasure.jpg);
+        background-position: center center;
+    }
 }
 
 /*# sourceMappingURL=bootstrap.min.css.map */

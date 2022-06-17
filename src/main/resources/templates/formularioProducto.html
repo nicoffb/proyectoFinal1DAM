@@ -5,7 +5,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>Administración de productos</title>
+  <meta name="description" content="Aqui podremos añadir productos">
+  <meta name="author" content="Nicolás Fernández de la Fuente Bursón">
+  <title>Añadir Producto</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700" />
   <link rel="stylesheet" href="../static/css/fontawesome.min.css" th:href="@{/css/fontawesome.min.css}">
   <link rel="stylesheet" href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}">
@@ -18,51 +20,7 @@
 
 
 <body>
-  <nav class="navbar navbar-expand-xl">
-    <div class="container h-100">
-      <a class="navbar-brand" href="./index.html" th:href="@{/}">
-        <h1 class="tm-site-title mb-0">Administración de productos</h1>
-      </a>
-      <button class="navbar-toggler ml-auto mr-0" type="button" data-toggle="collapse"
-        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-        aria-label="Toggle navigation">
-        <i class="fas fa-bars tm-nav-icon"></i>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mx-auto h-100">
-
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="./products.html" th:href="@{/lista}">
-              <i class="fas fa-shopping-cart"></i> Productos
-            </a>
-          </li>
-
-
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              <i class="fas fa-cog"></i>
-              <span> Settings <i class="fas fa-angle-down"></i> </span>
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Añadir</a>
-              <a class="dropdown-item" href="#">Editar</a>
-              <a class="dropdown-item" href="#">Lista</a>
-            </div>
-          </li>
-        </ul>
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link d-block" href="login.html">
-              Admin, <b>Logout</b>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+  <header th:replace="~{fragmentos/encabezadoAdmin::encabezadoAdmin}"></header>
 
   <!--FORMULARIO  -->
   <div class="container tm-mt-big tm-mb-big">
@@ -79,10 +37,8 @@
           <!-- FORMULARIOOOOOOOOOO -->
           <form class="form-horizontal" novalidate method="POST"
             th:action="${producto.id} ? @{/editar/submit} : @{/submit}" th:object="${producto}" id="formularioProductos">
-            <!-- th:action="@{/submit/{id}(id=${producto.id})}"  PORQUE SIEMPRE QUE PONGO PRODUCTO ID NO ME VA, es POR EL OPTIONAL? -->
             <div class="row tm-edit-product-row">
               <div class="col-xl-6 col-lg-6 col-md-12">
-                <!-- 2022-06-12 21:24:27.702  WARN 26320 --- [nio-9000-exec-9] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "{id}"]-->
                 <!-- <h1>
                   "th:action="${producto.id != 0} ? @{/editar/submit} : @{/submit}"
                   <span th:text="${producto.id} ? 'Editar' : 'Nuevo'"></span> PRODUCTOOOOOOOOOOOOOO </h1>-->
@@ -113,20 +69,9 @@
                   <input id="descuento" name="descuento" type="text" class="form-control validate" required
                     th:field="*{descuento}">
                 </div>
+              </div>
 
 
-              </div>
-              <div class="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">
-                <div class="tm-product-img-dummy mx-auto">
-                  <i class="fas fa-cloud-upload-alt tm-upload-icon"
-                    onclick="document.getElementById('fileInput').click();"></i>
-                </div>
-                <div class="custom-file mt-3 mb-3">
-                  <input id="fileInput" type="file" style="display:none;" />
-                  <!-- <input type="button" class="btn btn-primary btn-block mx-auto" value="SUBIR IMAGEN" th:field="*{imagen}"
-                    onclick="document.getElementById('fileInput').click();" /> -->
-                </div>
-              </div>
               <div class="col-12">
                 <button type="submit" class="btn btn-primary btn-block text-uppercase">Enviar</button>
                 <!-- th:text=" ${producto.id} ? 'Modificar producto' : 'Añadir Producto'" -->

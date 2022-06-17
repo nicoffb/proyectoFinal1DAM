@@ -58,8 +58,7 @@ public class ProductoController {
         return "products";
     }
 	
-	
-	
+
 	
 	//METODO PARA INDEX
 	@GetMapping("/")
@@ -164,41 +163,11 @@ public class ProductoController {
 	  }
 		
 		
-		
-		
-		
-/*		
- * @GetMapping("/actualizar/{id}")
-		public String actualizarProducto(@PathVariable("id") long id,  Model model) {
-			model.addAttribute("productos", productoServicio.findAll());
-			model.addAttribute("producto", productoServicio.findById(id).get());
-			model.addAttribute("mostrarFormulario", true);
-			return "producto";
-		}
- * 
- * 
- * 
- * 
- * 
- * 
- * 
-			Optional<Producto> producto = productoServicio.findById(id);
-		
-		if (producto != null ) {
-			
-			if (productoServicio.recogerIdentificador(producto).get(1)== {1,2,3}) {
-			productoServicio.deleteById(id);
-			return "redirect:/lista";
-			} else {
-				return "redirect:/?error=true";
-			}
-			}return "redirect:/formularioProducto";	
-		
-	}
-}
 
-*/		
-		
+	
+	
+	
+	
 		
 	}
 	

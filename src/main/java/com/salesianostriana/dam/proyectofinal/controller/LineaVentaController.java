@@ -40,8 +40,8 @@ import lombok.RequiredArgsConstructor;
 		public String listaVentas(Model model) {
 			
 			model.addAttribute("listaLineas", lineaventaServicio.findAll());
+			model.addAttribute("mensaje", "Este es un mensaje en una cadena de caracteres");
 			
-			// no se si cargarla desde aqui o desde el html Venta venta = ventaServicio.findById3(linea.id);
 			return "lineas";
 		}
 		
