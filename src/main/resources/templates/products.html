@@ -42,30 +42,24 @@
                   <th scope="col">BORRAR &nbsp;</th>
                 </tr>
               </thead>
+              
               <tbody th:each="producto : ${listaProductos}">
                 <!--EJEMPLO  -->
                 <tr>
                   <th scope="row"><input type="checkbox" /></th>
                   <td class="tm-product-name" th:text="${producto.nombre}"></td>
                   <td th:text="${#numbers.formatCurrency(producto.pvp)}"></td>
-                  <td th:text="${#numbers.formatDecimal(producto.descuento, 0, 0)}+'%'"></td>
+                  <td th:text="${'&nbsp;&nbsp;'+ #numbers.formatDecimal(producto.descuento, 0, 0)}+'%'"></td>
                   <td><a th:href="@{/editar/{id}(id=${producto.id})}" class="btn btn-primary">Editar</a>
-
                   <td> <a href="#" class="btn btn-danger" th:href="@{/borrar/{id}(id=${producto.id})}">Borrar</a></td>
                 </tr>
-
-
               </tbody>
+              
             </table>
+             
           </div>
-          <!-- table container -->
-
         </div>
-
-
-
       </div>
-
     </div>
     <a href="../templates/formularioProducto.html" th:href="@{/nuevo}"
       class="btn btn-primary btn-block text-uppercase mb-3">Añadir nuevo producto</a>

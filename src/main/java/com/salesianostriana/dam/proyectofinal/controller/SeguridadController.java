@@ -5,13 +5,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class SeguridadController {
-	
+
 	@GetMapping("/login")
-    String inicioUsuario() {
-        return "login";
-    }
-	
-	
-	
+	String inicioUsuario() {
+		return "login";
+	}
 
 }

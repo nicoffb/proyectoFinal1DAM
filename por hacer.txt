@@ -4,3 +4,15 @@ borrar varios
 
 
 pagina de error  o parametros fallidos cuando borras una venta hecha
+
+
+detalle del producto restar descuento
+
+cambiar las condiciones del if para que coja solo los id mayor q 3
+
+compra realizada con exito
+
+
+
+
+comentarios : dejo algunos comentarios para futuros proyectos

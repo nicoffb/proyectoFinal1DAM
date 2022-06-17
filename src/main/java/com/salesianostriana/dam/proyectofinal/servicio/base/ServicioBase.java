@@ -4,8 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ServicioBase<T, ID> {
-	
-	
+
 	T save(T t);
 
 	Optional<T> findById(ID id);
@@ -17,6 +16,5 @@ public interface ServicioBase<T, ID> {
 	void delete(T t);
 
 	void deleteById(ID id);
-	
 
 }

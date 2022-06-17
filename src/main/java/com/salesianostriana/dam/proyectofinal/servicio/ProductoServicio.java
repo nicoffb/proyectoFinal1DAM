@@ -10,26 +10,21 @@ import com.salesianostriana.dam.proyectofinal.repository.ProductoRepository;
 import com.salesianostriana.dam.proyectofinal.servicio.base.ServicioBaseImpl;
 
 @Service
-public class ProductoServicio extends
-		ServicioBaseImpl<Producto, Long, ProductoRepository>{
+public class ProductoServicio extends ServicioBaseImpl<Producto, Long, ProductoRepository> {
 
 	public ProductoServicio(ProductoRepository repositorio) {
 		super(repositorio);
 		// TODO Auto-generated constructor stub
 	}
-	
 
-	
-	public List<Producto> findByNombre(String nombre){
+	public List<Producto> findByNombre(String nombre) {
 		return repositorio.findByNombreContainsIgnoreCase(nombre);
 	}
-	
+
 //	public List<Long> recogerIdentificador(Optional<Producto> producto) {
 //		List<Long> listaIds = repositorio.obtenerIds();
 //		//listaIds<0>listaIds=  crear una lista con los tres primer ids de la lista 
 //		return listaIds;
 //	}
-
-
 
 }
