@@ -9,7 +9,11 @@
   <header th:fragment="encabezadoAdmin">
     <nav class="navbar navbar-expand-xl">
       <div class="container h-100">
-        <a class="navbar-brand" href="./index.html" th:href="@{/}">
+        <a href="./index.html" th:href="@{/}">
+        <img src="../static/imagenes/treasurepink.png" th:src="@{/imagenes/treasurepink.png}" alt="icono de la empresa"
+        style="width:48px" >
+        </a>
+        <a class="navbar-brand" href="../products.html" th:href="@{/lista}">
           <h1 class="tm-site-title mb-0">Panel de administración</h1>
         </a>
 

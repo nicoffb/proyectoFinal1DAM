@@ -103,4 +103,22 @@
 
 </body>
 
+<script>
+  let tema = document.getElementById('btnOscuro');
+  tema.addEventListener('click', apagar);
+
+  let tema2 = document.getElementById('btnClaro');
+  tema2.addEventListener('click', encender);
+
+
+  function apagar(){
+    document.body.style.backgroundColor = "black"
+  }
+
+  function encender(){
+    document.body.style.backgroundColor = "white"
+  }
+  
+</script>
+
 </html>

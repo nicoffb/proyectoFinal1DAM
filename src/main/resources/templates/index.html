@@ -58,17 +58,17 @@
 					<div class="carousel-inner">
 
 						<div class="item active">
-							<img src="../static/imagenes/bannerlol.jpg" th:src="@{/imagenes/bannerlol.jpg}" alt="Lol"
+							<img src="../static/imagenes/bannerlol.jpg" th:src="@{/imagenes/bannerlol.jpg}" alt="League of Legends"
 								width="100%" height="70%">
 						</div>
 
 						<div class="item">
-							<img src="../static/imagenes/bannerwow.jpg" th:src="@{/imagenes/bannerwow.jpg}" alt="Wow"
+							<img src="../static/imagenes/bannerwow.jpg" th:src="@{/imagenes/bannerwow.jpg}" alt="World of Warcraft"
 								width="100%" height="70%">
 						</div>
 
 						<div class="item">
-							<img src="../static/imagenes/codbanner.jpg" th:src="@{/imagenes/codbanner.jpg}" alt="Cod">
+							<img src="../static/imagenes/codbanner.jpg" th:src="@{/imagenes/codbanner.jpg}" alt="Call of Duty">
 						</div>
 
 						<!-- Left and right controls -->
@@ -106,7 +106,7 @@
 							<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 
 
-								<!-- CARTA DE EJEMPLO ------------------------------------------------------------------------------------  -->
+								<!-- LISTADO DE PRODUCTOS ------------------------------------------------------------------------------------  -->
 								<div class="col" th:each="producto : ${listaProductos}">
 									<img th:src="${#strings.isEmpty(producto.imagen)} ? 'http://placehold.it/350x260' : ${producto.imagen}"
 										alt="miniatura" width="100%" height="450">
@@ -154,4 +154,21 @@
 
 </body>
 
+<script>
+    let tema = document.getElementById('btnOscuro');
+    tema.addEventListener('click', apagar);
+
+    let tema2 = document.getElementById('btnClaro');
+    tema2.addEventListener('click', encender);
+
+
+    function apagar(){
+      document.body.style.backgroundColor = "black"
+    }
+
+    function encender(){
+      document.body.style.backgroundColor = "white"
+    }
+    
+</script>
 </html>
