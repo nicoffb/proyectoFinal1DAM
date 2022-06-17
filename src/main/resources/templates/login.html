@@ -1,22 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Usaremos esta página para identificarnos">
-  	<meta name="author" content="Nicolás Fernández de la Fuente Bursón">
-  	<title>Autentificación</title>
+    <meta name="author" content="Nicolás Fernández de la Fuente Bursón">
+    <title>Autentificación</title>
     <link rel="stylesheet" href="../static/css/login.css" th:href="@{/css/login.css}">
     <style>
-
-        body{
-            background: #ffe259; 
-            background: -webkit-linear-gradient(to right, #ffa751, #ffe259); 
-            background: linear-gradient(to right, #ffa751, #ffe259); 
+        body {
+            background: #ffe259;
+            background: -webkit-linear-gradient(to right, #ffa751, #ffe259);
+            background: linear-gradient(to right, #ffa751, #ffe259);
 
         }
-        .bg{
-            background-image: url([[@{/imagenes/treasure.jpg}]]);                  /*  RUTA DINAMICA DEL THYMELEAF */
+
+        .bg {
+            background-image: url([[@{/imagenes/treasure.jpg}]]);
+            /*  RUTA DINAMICA DEL THYMELEAF */
             background-position: center center;
         }
     </style>
@@ -28,57 +30,62 @@
 
 
     <header>
-      
+
         <div class="navbar navbar-dark bg-dark shadow-sm">
-          <div class="container">
-            <a href="./index.html" th:href="@{/}" class="navbar-brand d-flex align-items-center">
-              <img src="../static/imagenes/treasurepink.png" th:src="@{/imagenes/treasurepink.png}" alt="" width="8%">
-              <strong>TREASURE GAMES</strong>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader"
-              aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-          </div>
+            <div class="container">
+                <a href="./index.html" th:href="@{/}" class="navbar-brand d-flex align-items-center">
+                    <img src="../static/imagenes/treasurepink.png" th:src="@{/imagenes/treasurepink.png}" alt=""
+                        width="8%">
+                    <strong>TREASURE GAMES</strong>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader"
+                    aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
         </div>
-      </header>
-    <div class="container w-75 bg-primary mt-5 rounded shadow" >
+    </header>
+    <div class="container w-75 bg-primary mt-5 rounded shadow">
         <div class="row align-items-center align-items-stretch">
             <div class="col d-none d-lg-block col-md-5 col-lg-5 col-xl-6 rounded bg">
-                
+
             </div>
-    
+
             <div class="col bg-white p-5 col-lg-7 col-xl-6 rounded-end">
                 <div class="text-end">
-                    <img src="../static/imagenes/treasurepink.png" th:src="@{/imagenes/treasurepink.png}"   alt="" style="width:48px">
+                    <img src="../static/imagenes/treasurepink.png" th:src="@{/imagenes/treasurepink.png}" alt=""
+                        style="width:48px">
                 </div>
                 <h2 class="fw-bold text-center pt-5 mb-5">Bienvenido</h2>
 
-                
+
 
                 <!--
                     Formulario de login inyectar formulario aqui y que apunte a securuty login y login 2
                 -->
                 <form method="POST" th:action="@{/login}" sec:authorize="!isAuthenticated()">
                     <div class="mb-4">
-                         <label for="username" class="form-label">Nombre de usuario </label>
-        				<input type="text" class="form-control" name="username" id="username" placeholder="Nombre de usuario" autofocus="autofocus" />
+                        <label for="username" class="form-label">Nombre de usuario </label>
+                        <input type="text" class="form-control" name="username" id="username"
+                            placeholder="Nombre de usuario" autofocus="autofocus" />
                     </div>
                     <div class="mb-4">
                         <label for="password" class="form-label">Contraseña</label>
-                        <input type="password" class="form-control" name="password" id="password" placeholder="Contraseña" /> 
+                        <input type="password" class="form-control" name="password" id="password"
+                            placeholder="Contraseña" />
                     </div>
-                    
+
                     <div class="d-grid">
                         <button type="submit" class="btn btn-primary">Iniciar sesión</button>
                     </div>
-                   
+
                 </form>
 
             </div>
         </div>
     </div>
-    
+
     <script src="bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

@@ -13,15 +13,15 @@
   <link rel="stylesheet" href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}">
   <link rel="stylesheet" href="../static/css/templatemo-style.css" th:href="@{/css/templatemo-style.css}">
 
-    <!-- libreria objetivo  -->
-     <!-- datedropper -->
+  <!-- libreria objetivo  -->
+  <!-- datedropper -->
   <script src="../static/js/datedropper-javascript.js" th:src="@{/js/datedropper-javascript.js}"></script>
 
 </head>
 
 
 <body>
- <header th:replace="~{fragmentos/encabezadoAdmin::encabezadoAdmin}"></header>
+  <header th:replace="~{fragmentos/encabezadoAdmin::encabezadoAdmin}"></header>
 
   <!--FORMULARIO  -->
   <div class="container tm-mt-big tm-mb-big">
@@ -36,7 +36,8 @@
 
 
           <!-- FORMULARIOOOOOOOOOO -->
-          <form class="form-horizontal" novalidate method="POST" th:action=" @{/nuevaVenta/submit} "th:object="${venta}">
+          <form class="form-horizontal" novalidate method="POST" th:action=" @{/nuevaVenta/submit} "
+            th:object="${venta}">
 
             <div class="row tm-edit-product-row">
               <div class="col-xl-6 col-lg-6 col-md-12">
@@ -67,8 +68,8 @@
       </div>
     </div>
   </div>
-  </div>
-    <footer class="tm-footer row tm-mt-small">
+
+  <footer class="tm-footer row tm-mt-small">
     <div class="col-12 font-weight-light">
       <p class="text-center text-white mb-0 px-4 small">
         Copyright &copy; <b>Nico Salesianos de Triana 2022</b>
@@ -77,11 +78,11 @@
   </footer>
 
 
-   <!-- APLICANDO LA LIBRERÍA DATEDROPPER-->
-<script>
-  new dateDropper({
-    selector: 'input[type="date"]'
-  });
+  <!-- APLICANDO LA LIBRERÍA DATEDROPPER-->
+  <script>
+    new dateDropper({
+      selector: 'input[type="date"]'
+    });
   </script>
 
 

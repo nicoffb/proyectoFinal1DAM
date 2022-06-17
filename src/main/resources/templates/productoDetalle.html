@@ -4,7 +4,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Aqui veremos la sinopsis y todas las ofertas actuales para el producto seleccionado">
+  <meta name="description"
+    content="Aqui veremos la sinopsis y todas las ofertas actuales para el producto seleccionado">
   <meta name="author" content="Nicolás Fernández de la Fuente Bursón">
   <title>Detalles y ofertas</title>
 
@@ -43,8 +44,6 @@
 
   <header th:replace="~{fragmentos/encabezado::encabezado}"></header>
 
-
-  <!-- AGREGAR TODA LA ESTRUCTURA Y ETIQUETAS SEMANTICAS CUERPO-->
   <main>
     <div class="container mt-5 mb-5" th:object="${producto}">
       <div class="row d-flex justify-content-center">
@@ -72,24 +71,25 @@
                   <div class="mt-4 mb-3"> <span class="text-uppercase text-muted brand">PC</span>
                     <h5 class="text-uppercase" th:text="${producto.nombre}"></h5>
                     <div class="price d-flex flex-row align-items-center">
-                    <span th:text="${producto.pvp}" > </span>
-                    <small>€ Precio original</small>
+                      <span th:text="${producto.pvp}"> </span>
+                      <small>€ Precio original</small>
                     </div>
-                    <div class="ml-2"> 
-                      <span th:text="${producto.descuento}" > </span>
-                       <small>de descuento ahora!!</small>
-                     
+                    <div class="ml-2">
+                      <span th:text="${producto.descuento}"> </span>
+                      <small>de descuento ahora!!</small>
+
                     </div>
-                    
+
                   </div>
                   <p class="about" th:text="${producto.descripcion}"></p>
-					
-				<a href="/productoACarrito/" th:href="@{/productoACarrito/{id}(id=${producto.id})}" sec:authorize="isAuthenticated()">
-                  <div class="cart mt-4 align-items-center"> <button
-                      class="btn btn-danger text-uppercase mr-2 px-4">Añadir al carrito</button> <i
-                      class="fa fa-heart text-muted"></i> <i class="fa fa-share-alt text-muted"></i>
-                  </div>
-				</a>
+
+                  <a href="/productoACarrito/" th:href="@{/productoACarrito/{id}(id=${producto.id})}"
+                    sec:authorize="isAuthenticated()">
+                    <div class="cart mt-4 align-items-center"> <button
+                        class="btn btn-danger text-uppercase mr-2 px-4">Añadir al carrito</button> <i
+                        class="fa fa-heart text-muted"></i> <i class="fa fa-share-alt text-muted"></i>
+                    </div>
+                  </a>
                 </div>
               </div>
             </div>

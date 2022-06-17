@@ -8,10 +8,8 @@ function validarFormulario(){
 let resultado = false;
 
 resultado = comprobarNombre() &&
-      comprobarDescripcion();
-     /*  comprobarImg() &&
-      comprobarPrecio() &&
-      comprobarEdad(); */
+      comprobarDescripcion() &&
+      comprobarPrecio(); 
 
 return resultado;
 }
@@ -31,7 +29,7 @@ return correcto;
 
 function comprobarDescripcion(){
 let desc = formProductos.descripcion;
-let correcto = desc.value.length >= 25;
+let correcto = desc.value.length >= 12;
 
 if(correcto){
   desc.nextElementSibling.hidden = true;
@@ -41,40 +39,13 @@ if(correcto){
 
 
 
-
-
-
-
-
-
 return correcto;
 }
-function comprobarImg(){
-let img = formProductos.imgProducto;
-let correcto = img.value!="";
 
-if(correcto){
-  img.nextElementSibling.hidden = true;
-}else{
-  img.nextElementSibling.hidden = false;
-}
 
-return correcto;
-}
-function comprobarEdad(){
-let edad = formProductos.EdadMinima;
-let correcto = edad.value!="" &&  !isNaN(edad.value) && Number.isInteger(+edad.value) && edad.value >= 6;
 
-if(correcto){
-  edad.nextElementSibling.hidden = true;
-}else{
-  edad.nextElementSibling.hidden = false;
-}
-
-return correcto;
-}
 function comprobarPrecio(){
-let precio = formProductos.PrecioSesion;
+let precio = formProductos.pvp;
 let correcto = precio.value!="" &&  !isNaN(precio.value) && precio.value > 0;
 
 if(correcto){
@@ -85,20 +56,11 @@ if(correcto){
 
 return correcto;
 }
-function comprobarSpecs(){
-let caballos = formProductos.cv;
-let cilindrada = formProductos.cc;
-let vpunta = formProductos.kmh;
-let mensaje = document.getElementById("mensajeSpecs");
-let correcto = !isNaN(caballos.value) && caballos.value >= 0 && caballos.value <= 100 &&
-      !isNaN(cilindrada.value) && cilindrada.value >= 0 &&
-      !isNaN(vpunta.value) && vpunta.value >= 0;
 
-if(correcto){
-  mensaje.hidden = true;
-}else{
-  mensaje.hidden = false;
-}
 
-return correcto;
-}
+
+
+
+
+
+

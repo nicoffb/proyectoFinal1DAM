@@ -15,7 +15,8 @@
   <link rel="stylesheet" href="../static/jquery-ui-datepicker/jquery-ui.css" type="text/css"
     th:href="@{/jquery-ui-datepicker/jquery-ui.css}">
 
-  <script src="../static/js/validacionFormularioProducto.js" th:src="@{/js/validacionFormularioProducto.js}" defer></script>
+  <script src="../static/js/validacionFormularioProducto.js" th:src="@{/js/validacionFormularioProducto.js}"
+    defer></script>
 </head>
 
 
@@ -36,7 +37,8 @@
 
           <!-- FORMULARIOOOOOOOOOO -->
           <form class="form-horizontal" novalidate method="POST"
-            th:action="${producto.id} ? @{/editar/submit} : @{/submit}" th:object="${producto}" id="formularioProductos">
+            th:action="${producto.id} ? @{/editar/submit} : @{/submit}" th:object="${producto}" id="formularioProductos"
+            onsubmit="return validarFormulario();">
             <div class="row tm-edit-product-row">
               <div class="col-xl-6 col-lg-6 col-md-12">
                 <!-- <h1>
@@ -50,12 +52,13 @@
                   <label for="nombre">Nombre</label>
                   <input id="nombre" name="nombre" type="text" class="form-control validate" required
                     th:field="*{nombre}">
-                  <p class="errorForm">Debe rellar el nombre</p>
+                  <p class="errorForm">No puedes dejar el nombre en blanco</p>
                 </div>
                 <div class="form-group mb-3">
                   <label for="descripcion">Descripción</label>
-                  <textarea class="form-control validate" rows="3" required th:field="*{descripcion}" id="descripcion"></textarea>
-                  <p class="errorForm">Debes tener 25 caracteres</p>
+                  <textarea class="form-control validate" rows="3" required th:field="*{descripcion}"
+                    id="descripcion"></textarea>
+                  <p class="errorForm">Ingresar un mínimo de 10 carácteres por favor</p>
                 </div>
 
 
@@ -63,11 +66,15 @@
                   <label for="pvp">PVP</label>
                   <input id="pvp" name="pvp" type="text" class="form-control validate" data-large-mode="true"
                     th:field="*{pvp}" placeholder="Introduzca el precio base ">
+                  <p class="errorForm">Ingresar un número válido por favor</p>
                 </div>
+
+
                 <div class="form-group mb-3 col-xs-12 col-sm-6">
                   <label for="descuento">Descuento</label>
                   <input id="descuento" name="descuento" type="text" class="form-control validate" required
                     th:field="*{descuento}">
+
                 </div>
               </div>
 
@@ -76,11 +83,11 @@
                 <button type="submit" class="btn btn-primary btn-block text-uppercase">Enviar</button>
                 <!-- th:text=" ${producto.id} ? 'Modificar producto' : 'Añadir Producto'" -->
               </div>
+            </div>
           </form>
         </div>
       </div>
     </div>
-  </div>
   </div>
   <footer class="tm-footer row tm-mt-small">
     <div class="col-12 font-weight-light">

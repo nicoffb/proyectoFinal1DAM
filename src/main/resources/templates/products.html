@@ -5,7 +5,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <meta name="description" content="Listado de productos con sus respectivas opciones para editar y borrarlos de la base de datos">
+  <meta name="description"
+    content="Listado de productos con sus respectivas opciones para editar y borrarlos de la base de datos">
   <meta name="author" content="Nicolás Fernández de la Fuente Bursón">
   <title>Listado de videojuegos</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700" />
@@ -17,7 +18,7 @@
 
 <body id="reportsPage">
   <header th:replace="~{fragmentos/encabezadoAdmin::encabezadoAdmin}"></header>
-  
+
   <div class="container mt-5">
     <!-- este div sale solo si los parametros dan error -->
     <div class="alert alert-warning alert-dismissible" role="alert" th:if="${param.error}">
@@ -42,7 +43,7 @@
                   <th scope="col">BORRAR &nbsp;</th>
                 </tr>
               </thead>
-              
+
               <tbody th:each="producto : ${listaProductos}">
                 <!--EJEMPLO  -->
                 <tr>
@@ -54,9 +55,9 @@
                   <td> <a href="#" class="btn btn-danger" th:href="@{/borrar/{id}(id=${producto.id})}">Borrar</a></td>
                 </tr>
               </tbody>
-              
+
             </table>
-             
+
           </div>
         </div>
       </div>

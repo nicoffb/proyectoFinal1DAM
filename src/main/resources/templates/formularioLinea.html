@@ -33,39 +33,43 @@
 
 
           <!-- FORMULARIOOOOOOOOOO -->
-          <form class="form-horizontal" novalidate method="POST" th:action=" @{/lineas/nuevaLinea/submit} " th:object="${linea}">
+          <form class="form-horizontal" novalidate method="POST" th:action=" @{/lineas/nuevaLinea/submit} "
+            th:object="${linea}">
 
             <div class="row tm-edit-product-row">
               <div class="col-xl-6 col-lg-6 col-md-12">
                 <input type="hidden" th:field="*{id}" id="id">
-                <input type="hidden" th:field="*{venta}" id="venta"> 
+                <input type="hidden" th:field="*{venta}" id="venta">
+              </div>
 
 
-                <div class="form-group mb-3">
-                  <label for="videojuego">Videojuego</label>
-                  <select id="videojuego" name="videojuego" class="form-control validate" requiredth:field="*{videojuego}">
-                    <option th:each="juego : ${videojuegos}" th:text="${juego.nombre}" th:value="${juego.id}"></option>
-                  </select>
+              <div class="form-group mb-3">
+                <label for="videojuego">Videojuego</label>
+                <select id="videojuego" name="videojuego" class="form-control validate" required
+                  th:field="*{videojuego}">
+                  <option th:each="juego : ${videojuegos}" th:text="${juego.nombre}" th:value="${juego.id}"></option>
+                </select>
+              </div>
 
 
-                <div class="row">
-                  <div class="form-group mb-3 col-xs-12 col-sm-6">
-                    <label for="cantidad">Cantidad</label>
-                    <input id="cantidad" name="cantidad" type="text" class="form-control validate"
-                      data-large-mode="true" th:field="*{cantidad}" >
-                  </div>
+              <div class="row">
+                <div class="form-group mb-3 col-xs-12 col-sm-6">
+                  <label for="cantidad">Cantidad</label>
+                  <input id="cantidad" name="cantidad" type="text" class="form-control validate" data-large-mode="true"
+                    th:field="*{cantidad}">
                 </div>
-                <div class="col-12">
-                  <button type="submit" class="btn btn-primary btn-block text-uppercase">Enviar</button>
-
-
-                </div>
+              </div>
+              <div class="col-12">
+                <button type="submit" class="btn btn-primary btn-block text-uppercase">Enviar</button>
+              </div>
+            </div>
           </form>
         </div>
       </div>
     </div>
   </div>
-  </div>
+
+
   <footer class="tm-footer row tm-mt-small">
     <div class="col-12 font-weight-light">
       <p class="text-center text-white mb-0 px-4 small">

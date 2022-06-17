@@ -5,7 +5,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <meta name="description" content="Aqui podremos ver las ventas realizadas para editar sus lineas de venta o añadir nuevas (sin checkout)">
+  <meta name="description"
+    content="Aqui podremos ver las ventas realizadas para editar sus lineas de venta o añadir nuevas (sin checkout)">
   <meta name="author" content="Nicolás Fernández de la Fuente Bursón">
   <title>Ventas realizadas</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700" />
@@ -59,6 +60,7 @@
       </button>
       <span>¡No se pueden modificar los tres primeros productos!</span>
     </div>
+    <p>GESTIÓN DE VENTAS</p>
     <div>
       <div>
         <div class="tm-bg-primary-dark tm-block tm-block-products">
@@ -76,7 +78,6 @@
                 </tr>
               </thead>
               <tbody th:each="venta : ${listaVentas}">
-                <!--EJEMPLO DOBLE BUCLE PARA IR SACANDO LAS LINEAAS DE VENTAS  -->
                 <tr>
                   <th scope="row"><input type="checkbox" /></th>
                   <td th:text="${venta.id}"></td>
@@ -95,15 +96,9 @@
 
               </tbody>
             </table>
-            <p>Recaudo este mes : </p>
-            <span th:text="${recaudado}">0</span>
+            <p>Recaudado este mes : <span th:text="${#numbers.formatCurrency(recaudado)}">0</span> </p>
+            
           </div>
-          <!-- table container -->
-
-
-          <!--  -->
-
-
         </div>
 
 
@@ -116,25 +111,25 @@
     <button class="btn btn-primary btn-block text-uppercase">
       Borrar productos seleccionados
     </button>
-   <footer class="tm-footer row tm-mt-small">
-    <div class="col-12 font-weight-light">
-      <p class="text-center text-white mb-0 px-4 small">
-        Copyright &copy; <b>Nico Salesianos de Triana 2022</b>
-      </p>
-    </div>
-  </footer>
+    <footer class="tm-footer row tm-mt-small">
+      <div class="col-12 font-weight-light">
+        <p class="text-center text-white mb-0 px-4 small">
+          Copyright &copy; <b>Nico Salesianos de Triana 2022</b>
+        </p>
+      </div>
+    </footer>
 
-  <script src="js/jquery-3.3.1.min.js"></script>
-  <!-- https://jquery.com/download/ -->
-  <script src="js/bootstrap.min.js"></script>
-  <!-- https://getbootstrap.com/ -->
-  <script>
-    $(function () {
-      $(".tm-product-name").on("click", function () {
-        window.location.href = "edit-product.html";
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <!-- https://jquery.com/download/ -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- https://getbootstrap.com/ -->
+    <script>
+      $(function () {
+        $(".tm-product-name").on("click", function () {
+          window.location.href = "edit-product.html";
+        });
       });
-    });
-  </script>
+    </script>
 </body>
 
 </html>

@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <meta name="description" content="Aqui podremos ver todas las lineas de venta asociadas a una venta ya realizada">
   <meta name="author" content="Nicolás Fernández de la Fuente Bursón">
-  <title>Lineas de venta de  una venta</title>
+  <title>Lineas de venta de una venta</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700" />
   <link rel="stylesheet" href="../static/css/fontawesome.min.css" th:href="@{/css/fontawesome.min.css}">
   <link rel="stylesheet" href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}">
@@ -17,11 +17,11 @@
 
 <body id="reportsPage">
 
-	<header th:replace="~{fragmentos/encabezadoAdmin::encabezadoAdmin}"></header>
-  
-  
-  
-  
+  <header th:replace="~{fragmentos/encabezadoAdmin::encabezadoAdmin}"></header>
+
+
+
+
   <div class="container mt-5">
     <!-- este div sale solo si los parametros dan error -->
     <div class="alert alert-warning alert-dismissible" role="alert" th:if="${param.error}">
@@ -30,6 +30,7 @@
       </button>
       <span>¡No se pueden modificar los tres primeros productos!</span>
     </div>
+    <p>LINEAS DE VENTA DE LA VENTA SELECCIONADA</p>
     <div>
       <div>
         <div class="tm-bg-primary-dark tm-block tm-block-products">
@@ -52,17 +53,18 @@
                   <td th:text="${lineaVenta.videojuego.nombre}"></td>
                   <td th:text="${#numbers.formatCurrency(lineaVenta.precioUnitario)}"></td>
                   <td th:text="${#numbers.formatDecimal(lineaVenta.cantidad, 0, 0)}"></td>
-                 
+
                   <td><a th:href="@{/lineas/editarLinea/{id}(id=${lineaVenta.id})}" class="btn btn-primary">Editar</a>
 
-                  <td> <a href="#" class="btn btn-danger" th:href="@{/lineas/borrarLinea/{id}(id=${lineaVenta.id})}">Borrar</a></td> 
+                  <td> <a href="#" class="btn btn-danger"
+                      th:href="@{/lineas/borrarLinea/{id}(id=${lineaVenta.id})}">Borrar</a></td>
                 </tr>
 
 
               </tbody>
             </table>
           </div>
-       
+
         </div>
 
 
@@ -71,13 +73,10 @@
 
     </div>
     <a href="../templates/formularioProducto.html" th:href="@{/lineas/nuevaLinea/{id}(id=${venta.id})}"
-      class="btn btn-primary btn-block text-uppercase mb-3">Añadir nuevo producto</a>
-    <button class="btn btn-primary btn-block text-uppercase">
-      Borrar productos seleccionados
-    </button>
+      class="btn btn-primary btn-block text-uppercase mb-3">Añadir nuevo</a>
   </div>
-  
-  
+
+
   <footer class="tm-footer row tm-mt-small">
     <div class="col-12 font-weight-light">
       <p class="text-center text-white mb-0 px-4 small">
