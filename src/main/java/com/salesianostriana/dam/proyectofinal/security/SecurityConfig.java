@@ -15,59 +15,40 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    private UsuarioRepo usuarios;
+	@Autowired
+	private UsuarioRepo usuarios;
 
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService());
-    }
+	@Override
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		auth.userDetailsService(userDetailsService());
+	}
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http
-                .authorizeRequests()
-                .antMatchers("/private/**").hasAnyRole("USER", "ADMIN")
-                .antMatchers("/admin/**").hasRole("ADMIN")
-                .antMatchers("/indexAdmin/**").hasRole("ADMIN")
-                .antMatchers("/indexUsuario/**").hasRole("USER")
-                .anyRequest().permitAll()
-                .and().exceptionHandling().accessDeniedPage("/auth-error")
-                .and().formLogin()
-                .and().logout().logoutSuccessUrl("/");
-        
-        http.csrf().disable();
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+		http.authorizeRequests().antMatchers("/carrito/**").hasAnyRole("USER", "ADMIN")
+				.antMatchers("/lineas/**", "/lista/**", "/listaVentas/**").hasRole("ADMIN").anyRequest().permitAll()
+				.and().exceptionHandling().accessDeniedPage("/auth-error").and().formLogin().loginPage("/")
+				.loginProcessingUrl("/login").failureUrl("/login-error").permitAll().and().logout().logoutUrl("/logout")
+				.logoutSuccessUrl("/").permitAll();
 
-        http.headers().frameOptions().disable();
+		http.csrf().disable();
 
-    }
-  //  <img th:src = /img  > PONER BARRA DELANTE EN TODAS LAS RESOURCES DE STATIC
-    //que dice de un error de cajon de sastre no sino que distintos como?
-    
-    
-    @Bean
-    @Override
-    public UserDetailsService userDetailsService() {
+		http.headers().frameOptions().disable();
 
-        InMemoryUserDetailsManager userDetailsManager = new InMemoryUserDetailsManager();
+	}
 
-        usuarios.getUsuarios()
-                .stream()
-                .map(u -> {
-                    return User
-                            .withUsername(u.getUsername())
-                            .password("{noop}"+ u.getPassword())
-                            .roles(u.getRole())
-                            .build();
-                    
-                    
+	@Bean
+	@Override
+	public UserDetailsService userDetailsService() {
 
-                })
-                .forEach(userDetailsManager::createUser);
-        
+		InMemoryUserDetailsManager userDetailsManager = new InMemoryUserDetailsManager();
 
-        return userDetailsManager;
+		usuarios.getUsuarios().stream().map(u -> {
+			return User.withUsername(u.getUsername()).password("{noop}" + u.getPassword()).roles(u.getRole()).build();
 
+		}).forEach(userDetailsManager::createUser);
 
-    }
+		return userDetailsManager;
+
+	}
 }

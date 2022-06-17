@@ -23,32 +23,32 @@ public class Inicio {
 	public void run() {
 		
 		Producto p = Producto.builder()
-				.nombre("God of war")
-				.descripcion("Siéntete como un dios en está épica aventura en la que te sumergiras de lleno en la cultura y mitología nórdica")
-				.pvp(29.99)
+				.nombre("Nier Automata")
+				.descripcion("En un futuro distante, los invasores de otro mundo lanzan un ataque bajo una nueva amenaza: un arma mitad organismo vivo, mitad máquina. A la vista de este suceso, los humanos son conducidos a abandonar el planeta Tierra y buscar refugio en la Luna. Tras los acontecimientos, el Consejo de la Humanidad organiza una resistencia formada por soldados androide en un esfuerzo por recuperar su planeta natal, desplegando una nueva unidad de infantería llamada YoRHa.")
+				.pvp(9.99)
 				.descuento(50)
-				.imagen("https://d1x7zurbps6occ.cloudfront.net/product/xlarge/756271-203321.jpg")
+				.imagen("https://image.api.playstation.com/cdn/EP0082/CUSA04480_00/P4ZghxHW2EEiwxim3ZZIG28aJB8LgebN.png")
 				.build();
 		productoRepository.save(p);
 		
 		
 
 		Producto p2 = Producto.builder()
-				.nombre("Jedi The Fallen Order")
-				.descripcion("Embárcate con tu sable láser en una historia digna de la mítica saga de Star Wars")
-				.pvp(16.99)
-				.descuento(30)
-				.imagen("https://static.wikia.nocookie.net/esstarwars/images/5/57/Fallen-Order-Box-Art.jpg")
+				.nombre("Horizon Forbidden West ")
+				.descripcion("Horizon Zero Dawn sigue el viaje de Aloy mientras intenta descubrir su pasado misterioso y los orígenes olvidados de su mundo. Ella vive en una versión futurista del planeta Tierra, planeta invadido por bestias mecánicas mientras los humanos se ven obligados a vivir en pequeñas tribus dispersas. Aloy posee un dispositivo llamado Focus, que le otorga habilidades sensoriales únicas que le ayudan en este planeta hostil.")
+				.pvp(79.99)
+				.descuento(10)
+				.imagen("https://sm.ign.com/ign_es/game/h/horizon-fo/horizon-forbidden-west_2v57.jpg")
 				.build();
 		productoRepository.save(p2);
 		
 
 		Producto p3 = Producto.builder()
-				.nombre("The Legend of Zelda")
-				.descripcion("Link despierta tras un profundo sueño de 100 años en un misterioso templo en el reino de Hyrule; junto a él, deberemos descubrir su pasado mientras escuchamos una voz que nos incita a enfrentarnos a un malvado ser que provocó el llamado cataclismo: Ganon.")
-				.pvp(59.99)
+				.nombre("Genshin Impact")
+				.descripcion("Los jugadores asumirán el papel de un misterioso «viajero», que emprende un viaje para encontrar a su hermano/a perdido/a y a la vez también desentrañar los misterios que esconde el continente de Teyvat.")
+				.pvp(5)
 				.descuento(0)
-				.imagen("https://www.zelda.com/breath-of-the-wild/assets/media/wallpapers/tablet-1.jpg")
+				.imagen("https://media.vandal.net/m/75962/genshin-impact-20209417573364_1.jpg")
 				.build();
 		productoRepository.save(p3);
 		

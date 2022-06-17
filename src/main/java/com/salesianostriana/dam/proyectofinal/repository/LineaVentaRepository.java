@@ -5,8 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import com.salesianostriana.dam.proyectofinal.model.LineaVenta;
 
-
 @Repository
-public interface LineaVentaRepository extends JpaRepository<LineaVenta, Long>{
+public interface LineaVentaRepository extends JpaRepository<LineaVenta, Long> {
 
-} 
+}

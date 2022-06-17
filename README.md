@@ -1,21 +1,18 @@
 # proyectoFinal
-vincular la pagina de detalle y fragmentar el footer
-
-crear consultas con querys
-
-podria poner desde el index por programacion y desde la lista por DOM
+Solo los admin pueden entrar y ver la casilla de ADMINISTRACIÓN en el index. Solo los usuarios registrados pueden añadir al carrito.
 
 
-hacer desplegable de la derecha
+ADMINS:         nico  Contraseña: 1234
+                  admin admin
+
+USUARIOS:
+user 1234
 
 
-hacer que el  update funcione
+
+Se pueden modificar parametros de ventas y las propias lineas de venta de forma retroactiva de las ventas ya realizadas.
+No se pueden añadir nuevas ventas con sus respectivas lineas de venta, aunque haya carrito, no hay checkout.
 
 
-el sistema de seguridad que muestre solo el ver detalle al usuario
 
-
-implementar las fotos
-
-
-AVISAR CUANDO NO SE PUEDA BORRAR, POR EJEMPLO SI YA ESTÁ LA VENTA HECHA , o no poder modificar los 4 primeros CON LO DE GET IDS
+No se puede borrar los productos ni las ventas metidas con el importsql (las 3 primeras) . Hay anotaciones de intentos de que saliera un mensaje de error cuando esto pasara, al igual que métodos que estaba creando para recoger la condición de los 3 primeros ids. Por el resto he configurado Spring Tool para que empiece a asignar los id por 500. El botón de borrar varios no he terminado de implementarlo

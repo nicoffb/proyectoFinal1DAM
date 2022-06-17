@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head></head>
+
+<body>
+  <!--Header-->
+  <header th:fragment="encabezado">
+
+    <div class="navbar navbar-dark bg-dark shadow-sm">
+      <div class="container">
+        <a href="../products.html" th:href="@{/lista}" class="navbar-brand d-flex align-items-center">
+          <img src="../../static/imagenes/treasurepink.png" th:src="@{/imagenes/treasurepink.png}" alt="" width="8%">
+          <h1><strong>TREASURE GAMES</strong></h1>
+
+        </a>
+        <a sec:authorize="hasRole('ROLE_ADMIN')" class="nav-link text-primary big" href="javascript:void(0)" data-bs-toggle="offcanvas"
+          data-bs-target="#canvas">
+          <h1>ADMINISTRACIÓN</h1>
+        </a>
+
+        <div class="btn-group col-lg-2">
+          <a>
+          <button id="btnClaro" class="btn btn-light">Tema claro</button> 
+          </a>  
+          <a>                             
+          <button id="btnOscuro" class="btn btn-warning">Tema oscuro</button>    
+          </a>         
+        </div>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader"
+          aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">LOG IN
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </div>
+
+    <!--  offcanvas ACTIVO -->
+    <div class="collapse bg-dark" id="navbarHeader">
+      <div class="container">
+        <div class="row">
+
+          <a href="./loginFuturo.html" th:href="@{/login}"  class="col-sm-6 bg-primary">
+            <p>LOG IN</p>
+          </a>
+
+          <a href="./loginFuturo.html" th:href="@{/logout}" class="col-sm-6 bg-warning">
+            <p>LOG OUT</p>
+          </a>
+
+        </div>
+      </div>
+    </div>
+
+
+ 
+
+  <!--Offcanvas-->
+  <div class="offcanvas offcanvas-start" id="canvas">
+    <div class="offcanvas-header  bg-dark">
+      <h1 class="offcanvas-title text-primary">GESTIONAR</h1>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
+    </div>
+
+    <a href="./products.html" th:href="@{/lista}">
+      <div class=" row d-flex justify-content-center offcanvas-body bg-primary">
+        <div class="card col-xl-11 col-lg-6 px-0 mx-0">
+          <img class="card-img-top" src="../static/imagenes/videojuegos.jpg" th:src="@{/imagenes/videojuegos.jpg}" alt="gestion videojuegos" width="200%">
+          <div class="card-img-overlay">
+            <h2 class="card-title text-black text-center mt-5 display-1">Gestionar videojuegos</h2>
+          </div>
+        </div>
+      </div>
+    </a>
+    <a href="./products.html" th:href="@{/listaVentas}">
+      <div class=" row d-flex justify-content-center offcanvas-body bg-primary">
+        <div class="card col-xl-11 col-lg-9 px-0 mx-0">
+          <img class="card-img-top" src="../static/imagenes/ventas.jpg" th:src="@{/imagenes/ventas.jpg}"  alt="grafica ventas">
+          <div class="card-img-overlay">
+            <h2 class="card-title text-black text-center mt-5 display-4">Gestionar ventas</h2>
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+  
+  </header>
+   
+</body>
+

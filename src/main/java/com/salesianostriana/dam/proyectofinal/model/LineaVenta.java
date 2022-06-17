@@ -1,14 +1,12 @@
 package com.salesianostriana.dam.proyectofinal.model;
 
-
-
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -22,34 +20,31 @@ import lombok.NoArgsConstructor;
 @Builder
 
 public class LineaVenta {
-	
+
 	@ManyToOne
 	private Producto videojuego;
-	
+
 	private int cantidad;
 	private double precioUnitario;
-	
-	//esto debe estar aqui? una linea de venta crea un objeto venta?
+
 	@ManyToOne
 	private Venta venta;
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@SequenceGenerator(initialValue = 500, allocationSize = 1, name = "id", sequenceName = "id")
+	@GeneratedValue(generator = "id")
 	private long id;
-	
-	// Aqui deben estar los métodos helper de la asociación bidireccional entre Venta - LineaVenta
-	
+
+	// Métodos helper de la asociación bidireccional entre Venta - LineaVenta
+
 	public void sumarVenta(Venta venta) {
 		this.venta = venta;
 		venta.getLineas().add(this);
 	}
-	
+
 	public void borrarVenta(Venta venta) {
 		venta.getLineas().remove(this);
 		this.venta = null;
 	}
-	
-	//faltarian los de listado?
-	
 
 }

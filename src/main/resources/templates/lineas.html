@@ -5,57 +5,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>Administración de productos</title>
+  <meta name="description" content="Aqui podremos ver todas las lineas de venta asociadas a una venta ya realizada">
+  <meta name="author" content="Nicolás Fernández de la Fuente Bursón">
+  <title>Lineas de venta de una venta</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700" />
   <link rel="stylesheet" href="../static/css/fontawesome.min.css" th:href="@{/css/fontawesome.min.css}">
   <link rel="stylesheet" href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}">
   <link rel="stylesheet" href="../static/css/templatemo-style.css" th:href="@{/css/templatemo-style.css}">
-  <link rel="stylesheet" href="../static/jquery-ui-datepicker/jquery-ui.css" type="text/css"
-    th:href="@{/jquery-ui-datepicker/jquery-ui.css}">
 </head>
 
 
 <body id="reportsPage">
-  <nav class="navbar navbar-expand-xl">
-    <div class="container h-100">
-      <a class="navbar-brand" href="./index.html" th:href="@{/}">
-        <h1 class="tm-site-title mb-0">Administración de productos</h1>
-      </a>
 
-      <button class="navbar-toggler ml-auto mr-0" type="button" data-toggle="collapse"
-        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-        aria-label="Toggle navigation">
-        <i class="fas fa-bars tm-nav-icon"></i>
-      </button>
+  <header th:replace="~{fragmentos/encabezadoAdmin::encabezadoAdmin}"></header>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mx-auto h-100">
-
-          
-          <li class="nav-item">
-            <a class="nav-link active" href="./products.html" th:href="@{/lista}">
-              <i class="fas fa-shopping-cart"></i> Productos
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link active" href="./products.html" th:href="@{/listaVentas}">
-              <i class="fas fa-shopping-cart"></i> Ventas
-            </a>
-          </li>
-          
-          
-        </ul>
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link d-block" href="login.html">
-              Admin, <b>Logout</b>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
   <div class="container mt-5">
     <!-- este div sale solo si los parametros dan error -->
     <div class="alert alert-warning alert-dismissible" role="alert" th:if="${param.error}">
@@ -64,6 +27,7 @@
       </button>
       <span>¡No se pueden modificar los tres primeros productos!</span>
     </div>
+    <p>LINEAS DE VENTA DE LA VENTA SELECCIONADA</p>
     <div>
       <div>
         <div class="tm-bg-primary-dark tm-block tm-block-products">
@@ -72,7 +36,6 @@
               <thead>
                 <tr>
                   <th scope="col">&nbsp;</th>
-                  <th scope="col">ID</th>
                   <th scope="col">VIDEOJUEGO </th>
                   <th scope="col">PRECIO UNITARIO</th>
                   <th scope="col">CANTIDAD</th>
@@ -84,26 +47,21 @@
                 <!--EJEMPLO  -->
                 <tr>
                   <th scope="row"><input type="checkbox" /></th>
-                  <td th:text="${lineaVenta.id}">id</td>
-                  <td th:text="${lineaVenta.videojuego.nombre}">compra</td>
-                  <td th:text="${lineaVenta.precioUnitario}">pre</td>
-                  <td th:text="${lineaVenta.cantidad}">fecha</td>
-                 
-                  <td><a th:href="@{/editarLinea/{id}(id=${lineaVenta.id})}" class="btn btn-primary">Editar</a>
+                  <td th:text="${lineaVenta.videojuego.nombre}"></td>
+                  <td th:text="${#numbers.formatCurrency(lineaVenta.precioUnitario)}"></td>
+                  <td th:text="${#numbers.formatDecimal(lineaVenta.cantidad, 0, 0)}"></td>
 
-                  <td> <a href="#" class="btn btn-danger" th:href="@{/borrarLinea/{id}(id=${lineaVenta.id})}">Borrar</a></td> 
+                  <td><a th:href="@{/lineas/editarLinea/{id}(id=${lineaVenta.id})}" class="btn btn-primary">Editar</a>
+
+                  <td> <a href="#" class="btn btn-danger"
+                      th:href="@{/lineas/borrarLinea/{id}(id=${lineaVenta.id})}">Borrar</a></td>
                 </tr>
 
 
               </tbody>
             </table>
           </div>
-          <!-- table container -->
 
-
-         <!--  -->
-
-          
         </div>
 
 
@@ -111,18 +69,15 @@
       </div>
 
     </div>
-    <a href="../templates/formularioProducto.html" th:href="@{/lineas/nuevaLinea}"
-      class="btn btn-primary btn-block text-uppercase mb-3">Añadir nuevo producto</a>
-    <button class="btn btn-primary btn-block text-uppercase">
-      Borrar productos seleccionados
-    </button>
+    <a href="../templates/formularioProducto.html" th:href="@{/lineas/nuevaLinea/{id}(id=${venta.id})}"
+      class="btn btn-primary btn-block text-uppercase mb-3">Añadir nuevo</a>
   </div>
+
+
   <footer class="tm-footer row tm-mt-small">
     <div class="col-12 font-weight-light">
       <p class="text-center text-white mb-0 px-4 small">
-        Copyright &copy; <b>2022</b> All rights reserved.
-
-        Design: <a rel="nofollow noopener" href="https://templatemo.com" class="tm-footer-link"></a>
+        Copyright &copy; <b>Nico Salesianos de Triana 2022</b>
       </p>
     </div>
   </footer>

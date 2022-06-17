@@ -321,7 +321,7 @@ thead {
   margin-bottom: 20px;
 }
 .form-control {
-  padding: 19px 18px;
+  
   border-radius: 0;
   height: 50px;
 }
@@ -706,4 +706,8 @@ input[type="checkbox"]:focus {
   #lineChart {
     max-height: 350px;
   }
+}
+select{
+	padding-top: 10px;
+	padding-bottom: 10px;
 }

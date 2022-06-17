@@ -11,101 +11,80 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import com.salesianostriana.dam.proyectofinal.model.BuscarBean;
 import com.salesianostriana.dam.proyectofinal.model.Producto;
 import com.salesianostriana.dam.proyectofinal.servicio.ProductoServicio;
-import com.salesianostriana.dam.proyectofinal.servicio.VentaServicio;
-
 import lombok.RequiredArgsConstructor;
-
-
 
 @Controller
 @RequiredArgsConstructor
 public class ProductoController {
-	
+
 	@Autowired
 	HttpSession session;
-	
+
 	@Autowired
 	private final ProductoServicio productoServicio;
-	
-	private final VentaServicio ventaServicio;
-	
+
 	@GetMapping("/indexAdmin")
-    String inicio() {
-        return "index";
-    }
-	
-	
+	String inicio() {
+		return "index";
+	}
+
 	@GetMapping("/indexUsuario")
-    String inicioUsuario() {
-        return "indexUsuario";
-    }
-	
+	String inicioUsuario() {
+		return "indexUsuario";
+	}
+
 	@GetMapping("/auth-error")
-    String error() {
-        return "auto-error";
-    }
-	
-	
+	String error() {
+		return "auto-error";
+	}
+
 	@GetMapping("/lista")
-    public String listaProductos(Model model) {
+	public String listaProductos(Model model) {
 		model.addAttribute("listaProductos", productoServicio.findAll());
-        return "products";
-    }
-	
-	
-	
-	
-	//METODO PARA INVOCAR LA LISTA DE PRODUCTOS a partir de la base de datos
+		return "products";
+	}
+
+	// METODO PARA INDEX
 	@GetMapping("/")
 	public String index(Model model) {
 		model.addAttribute("listaProductos", productoServicio.findAll());
-	
-		
+		model.addAttribute("buscarForm", new BuscarBean());
+
 		return "index";
 	}
-	
-		
-	//METODO PARA INVOCAR ATRIBUTOS POR ID
+
+	// METODO PARA INVOCAR ATRIBUTOS POR ID
 	@GetMapping("/detalle/{id}")
 	public String detail(Model model, @PathVariable Long id) {
-		
+
 		Optional<Producto> p = productoServicio.findById(id);
-		
-		if (p != null) {
+
+		if (p.isPresent()) {
 			model.addAttribute("producto", p.get());
-			return "productoDetalle";			
+			return "productoDetalle";
 		} else {
 			return "redirect:/lista";
 		}
-		
-		//tendria q tener otro controller para cuando sea el usuario
-		//redirect lleva a otro controller, sin redirect al html
-		
-		//que es lo de redirect, porque producto detail, pq detalle si lo q quiero es mostrar especificamente
-		//los atributos de un solo id
-		
+
 	}
-	
-	
+
 //AÑADIR
 	@GetMapping("/nuevo")
 	public String mostrarFormulario(Model model) {
 		model.addAttribute("producto", new Producto());
 		return "formularioProducto";
 	}
-	
-	//submitear nuevo producto
-	@PostMapping( "/submit")
+
+	// submitear nuevo producto
+	@PostMapping("/submit")
 	public String procesarFormulario(@ModelAttribute("producto") Producto producto) {
 		productoServicio.save(producto);
 		return "redirect:/lista";
 	}
 
-
-	
 //EDITAR
 	@GetMapping("/editar/{id}")
 	public String editarProducto(@PathVariable("id") long id, Model model) {
@@ -121,78 +100,36 @@ public class ProductoController {
 
 	}
 
-	
 	@PostMapping("/editar/submit")
 	public String procesarFormularioEdicion(@ModelAttribute("producto") Producto p) {
 		productoServicio.edit(p);
-		return "redirect:/lista";//Volvemos a redirigir la listado a través del controller para pintar la lista actualizada con la modificación hecha
+		return "redirect:/lista";// Volvemos a redirigir la listado a través del controller para pintar la lista
+									// actualizada con la modificación hecha
 	}
-	
-	
-	
-	
+
 //BORRAR	
-	
+
 	@GetMapping("/borrar/{id}")
 	public String borrarCategoria(@PathVariable("id") long id, Model model) {
-		
+
 		Optional<Producto> producto = productoServicio.findById(id);
-		
-		if (producto != null ) {
+
+		if (producto.isPresent()) {
 			productoServicio.deleteById(id);
 			return "redirect:/lista";
-			} else {
-				
-				return "redirect:/formularioProducto";	
-				
-			}
-		
-	}
-		
-		
-		
-		
-		
-		
-		
-		
-		
-/*		
- * @GetMapping("/actualizar/{id}")
-		public String actualizarProducto(@PathVariable("id") long id,  Model model) {
-			model.addAttribute("productos", productoServicio.findAll());
-			model.addAttribute("producto", productoServicio.findById(id).get());
-			model.addAttribute("mostrarFormulario", true);
-			return "producto";
+		} else {
+
+			return "redirect:/formularioProducto";
+
 		}
- * 
- * 
- * 
- * 
- * 
- * 
- * 
-			Optional<Producto> producto = productoServicio.findById(id);
-		
-		if (producto != null ) {
-			
-			if (productoServicio.recogerIdentificador(producto).get(1)== {1,2,3}) {
-			productoServicio.deleteById(id);
-			return "redirect:/lista";
-			} else {
-				return "redirect:/?error=true";
-			}
-			}return "redirect:/formularioProducto";	
-		
+
 	}
+
+	@PostMapping("/buscar")
+	public String buscarProducto(@ModelAttribute("buscarForm") BuscarBean buscarBean, Model model) {
+		model.addAttribute("listaProductos", productoServicio.findByNombre(buscarBean.getBuscar()));
+		model.addAttribute("buscarForm", new BuscarBean());
+		return "index";
+	}
+
 }
-
-*/		
-		
-		
-	}
-	
-
-
-
-
