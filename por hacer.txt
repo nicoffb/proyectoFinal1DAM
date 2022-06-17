@@ -1,0 +1,6 @@
+gestion de lo que hace a cada pagina
+
+borrar varios
+
+
+pagina de error  o parametros fallidos cuando borras una venta hecha
